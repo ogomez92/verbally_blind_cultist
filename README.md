@@ -74,11 +74,24 @@ card or verb instead).
 
 ## What is announced
 
-Verbs starting, continuing, finishing (with how many cards are waiting), appearing and vanishing; a warning when a
-dangerous countdown is about to run out; cards that decay, change or vanish on the table; cards that arrive on the
+Verbs starting, continuing, finishing (with how many cards are waiting), appearing and vanishing; a running verb
+that opens a slot and wants a card (the slot is also named when you focus the verb and in the T readout), and what
+the verb will become when you put a card there; a warning when a dangerous countdown is about to run out; cards that decay, change or vanish on the table; cards that arrive on the
 table; greedy slots taking cards; the game's pop-up messages; pause and speed changes; the Mansus. Everything
 announced is also kept in the Events review buffer, and the story texts of finished verbs in the Story buffer.
 The events are also written to `CultistAccessibility_events.log` next to the mod, which helps with bug reports.
+
+## Languages
+
+The mod speaks the language the game is set to (Options, Language): English, Spanish, German, French, Russian,
+Japanese and Simplified Chinese. Changing the game's language changes the mod's speech at once. Your screen reader or
+Windows voice must have a voice for that language.
+
+To correct a translation or add one, put a text file named after the game's language id (`en`, `es`, `de`, `fr`,
+`ru`, `jp`, `zh-hans`) in a `lang` folder next to the mod, for example
+`BepInEx\plugins\CultistAccessibility\lang\es.txt`, with lines such as `Paused = En pausa`. Only the lines you want to
+change are needed; anything missing falls back to the built-in text, then to English. The built-in files, with every
+key, are in the `translations` folder of the release zip.
 
 ## Settings
 

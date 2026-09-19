@@ -21,12 +21,12 @@ namespace CultistAccessibility.Core.Buffers
 
         public static void Initialize()
         {
-            Events = new AnnouncementBuffer(Strings.BufferEvents, 200) { FollowLatest = true };
-            Details = new AnnouncementBuffer(Strings.BufferDetails, 200);
-            Story = new AnnouncementBuffer(Strings.BufferStory, 100) { FollowLatest = true };
-            Verbs = new AnnouncementBuffer(Strings.BufferVerbs, 200);
-            Table = new AnnouncementBuffer(Strings.BufferTable, 400);
-            Status = new AnnouncementBuffer(Strings.BufferStatus, 50);
+            Events = new AnnouncementBuffer(() => Strings.BufferEvents, 200) { FollowLatest = true };
+            Details = new AnnouncementBuffer(() => Strings.BufferDetails, 200);
+            Story = new AnnouncementBuffer(() => Strings.BufferStory, 100) { FollowLatest = true };
+            Verbs = new AnnouncementBuffer(() => Strings.BufferVerbs, 200);
+            Table = new AnnouncementBuffer(() => Strings.BufferTable, 400);
+            Status = new AnnouncementBuffer(() => Strings.BufferStatus, 50);
             All.Clear();
             All.Add(Events);
             All.Add(Details);

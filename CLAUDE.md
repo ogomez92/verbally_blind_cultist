@@ -53,7 +53,10 @@ Core/
   Speech + Output/SpeechHostClient   speech, event log file (CultistAccessibility_events.log next to the dll)
   Buffers/                   AnnouncementBuffer, BufferManager (Events, Details, Story, Verbs, Table, Status)
   KeyInput, InputGate        keyboard polling (unscaled time), which game key handlers may run
-  ModConfig, Strings, TextCleaner
+  ModConfig, TextCleaner
+  Strings + Loc              every spoken mod string; texts in Lang/<culture id>.txt (embedded, overridable from a lang
+                             folder next to the dll); language = the game's "Culture" config value, read on every
+                             lookup; plural rules per language; [[UI_KEY]] in a text = the game's own label
 Navigation/                  generic uGUI navigator (menus, overlays, options, legacy choice, endings)
   UiNavigator                items = Selectables a mouse could click (raycast test) + text rows of the same panels
   UiReader                   labels/roles/states, game-specific readers (settings, legacy entries, mods, tabs)
@@ -90,6 +93,11 @@ SpeechHost/                  x64 Prism host process
   Order is hierarchy order (designer order). "Windows" are `CanvasGroupFader` panels (or top-level panels); a change
   of the set of windows holding the reachable controls = a new context, announced with its title after it fades in.
 - **Events are polled** (TabletopEvents) rather than patched wherever state can be read, so no code path is missed.
+- **Slots of a running recipe** (the mini slot on the verb token, `VerbManifestation.DisplayRecipeThreshold`) are
+  announced when they appear empty ("X wants a card: ..."), named in the verb's summary and in the T readout. A card
+  put there changes `CurrentRecipe` away from `FallbackRecipe` while the timer keeps running
+  (`OngoingState.UpdateRecipePrediction`): spoken as "X will become", not "continues". A timer that goes back up
+  between two polls is a linked recipe that started ("continues"), whatever the recipe id.
 
 ## Pitfalls found (keep reading before changing things)
 - `Selectable.allSelectablesArray` also contains the developer console and bug-report UI of the persistent
@@ -134,6 +142,11 @@ SpeechHost/                  x64 Prism host process
   player last heard (a panel without controls came or went) does not read it again.
 - The menu notifier and the save error window are permanent `NotificationWindow`s that get reused: repeat
   suppression is time-limited, or the same message shown twice is read once.
+- Mod strings follow the game's language at any moment: never keep a `Strings` value in a static or long-lived field
+  (buffer names and help titles are `Func<string>`). New text goes into `Lang/en.txt` and every other file;
+  `python check-lang.py` verifies keys, placeholders and unused entries. The Chinese culture id is `zh-hans`, the
+  Japanese one `jp`. At plugin start the game's Config service does not exist yet, so `Loc` reads `Culture=` from the
+  game's `config.ini`. The descriptions in the .cfg stay English (bound before any culture is known).
 - Build with `build.ps1` (closes the game, `--no-incremental`, verifies the deployed timestamp); a running game locks
   the deployed files.
 

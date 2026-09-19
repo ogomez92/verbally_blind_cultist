@@ -1,0 +1,300 @@
+# Cultist Simulator Accessibility - Français. Les clés et le format sont expliqués dans en.txt.
+
+ModLoaded = Accessibilité de Cultist Simulator chargée. Appuyez sur F1 à tout moment pour obtenir de l'aide.
+
+# Lists and navigation
+StartOfList = Début.
+EndOfList = Fin.
+NothingToNavigate = Rien à parcourir ici.
+NothingFocused = Aucun élément sélectionné.
+Unavailable = indisponible
+Selected = sélectionné
+NotSelected = non sélectionné
+Checked = cochée
+Unchecked = non cochée
+Maximum = Maximum.
+Minimum = Minimum.
+PercentValue = {0} pour cent
+EditingField = Édition. Tapez, puis appuyez sur Entrée.
+SliderHint = Utilisez les flèches gauche et droite pour changer la valeur.
+PressNewKey = Appuyez sur la nouvelle touche pour cette action.
+NoKeyBound = aucune touche
+KeyBoundTo = Associée à {0}.
+PositionOf = {0} sur {1}
+
+# Roles
+RoleSlider = curseur
+RoleKeyBinding = raccourci clavier
+RoleTab = onglet
+RoleCheckbox = case à cocher
+RoleRadio = option
+RoleCombo = liste déroulante
+RoleEdit = champ de saisie
+RoleLink = lien
+OpeningLink = Ouverture du lien dans votre navigateur.
+RoleLegacyChoice = héritage
+CloseButton = Fermer
+StackCardsButton = Empiler les cartes
+CharacterName = Nom du personnage
+
+# Menus
+LegacyInstalled = installé, appuyez sur Entrée pour commencer
+LegacyNotInstalled = non installé
+ModMoveUp = Monter dans l'ordre de chargement
+ModMoveDown = Descendre dans l'ordre de chargement
+ModEnabled = activé
+ModDisabled = désactivé
+
+# Review buffers
+BufferEvents = Événements
+BufferDetails = Détails
+BufferStory = Histoire
+BufferVerbs = Verbes
+BufferTable = Table
+BufferStatus = État
+BufferTop = Le plus récent.
+BufferEnd = Le plus ancien.
+AllBuffersEmpty = Tous les tampons de relecture sont vides.
+BufferEmpty = {0} : vide.
+BufferSummary.one = {1}, {0} élément
+BufferSummary.other = {1}, {0} éléments
+
+# Help
+HelpTitle = Aide : {0}
+HelpNavigationHint = Les flèches haut et bas lisent l'aide, Échap la ferme.
+HelpClosed = Aide fermée.
+
+# Verbosity
+VerbosityIs = Niveau de détail : {0}.
+Verbosity.Terse = bref
+Verbosity.Normal = normal
+Verbosity.Verbose = détaillé
+
+# Key names
+Key.Delete = Supprimer
+Key.Backspace = Retour arrière
+Key.Space = Espace
+Key.Enter = Entrée
+Key.Escape = Échap
+Key.Tab = Tabulation
+Key.Insert = Insertion
+Key.Home = Origine
+Key.End = Fin
+Key.PageUp = Page précédente
+Key.PageDown = Page suivante
+Key.UpArrow = Flèche haut
+Key.DownArrow = Flèche bas
+Key.LeftArrow = Flèche gauche
+Key.RightArrow = Flèche droite
+
+# Screens
+Screen.Logo = Logo. Appuyez sur une touche pour passer.
+Screen.Quote = Citation d'ouverture.
+Screen.Menu = Menu principal.
+Screen.Tabletop = La table.
+Screen.GameOver = La fin.
+Screen.NewGame = Choisissez votre héritage.
+Screen.Crash = Le jeu a rencontré une erreur.
+PressAnyKey = Appuyez sur une touche pour continuer.
+DebugDumped = Informations de débogage écrites dans le journal.
+
+# The table
+GroupVerbs = Verbes
+GroupCards = Cartes
+GroupControls = Commandes
+GroupAnnounce = {0}, {1}
+NoVerbs = Aucun verbe sur la table.
+NoCards = Aucune carte sur la table.
+VerbCount.one = {0} verbe
+VerbCount.other = {0} verbes
+CardCount.one = {0} carte
+CardCount.other = {0} cartes
+BusyCount.one = {0} occupé
+BusyCount.other = {0} occupés
+DoneCount.one = {0} avec des résultats en attente
+DoneCount.other = {0} avec des résultats en attente
+TableHint = Les flèches déplacent, gauche et droite passent des verbes aux cartes et aux commandes, Entrée agit, F1 pour l'aide.
+
+# Verbs (situations)
+StateIdle = inactif
+StateReady = prêt à commencer
+StateRunning = en cours
+StateStarting = démarrage
+StateComplete = résultats en attente
+StateHalting = arrêt en cours
+StateBusy = occupé
+TimeLeft = encore {0}
+CardsWaiting.one = {0} carte en attente
+CardsWaiting.other = {0} cartes en attente
+WindowOpen = ouvert
+SlotEmpty = vide
+SlotWord = emplacement
+SlotNamed = emplacement {0}
+SlotCount.one = {0} emplacement
+SlotCount.other = {0} emplacements
+SlotGreedy = avide : prend tout seul une carte qui convient
+SlotConsumes = consume sa carte
+SlotBlocked = bloqué
+SlotRequires = accepte
+SlotForbids = interdit
+SlotEssential = doit avoir
+BringsSlot = Apporte un emplacement : {0}
+StartButton = Commencer
+StartUnavailable = Commencer, indisponible : ces cartes ne forment pas une recette qui peut débuter
+CollectAll = Tout récupérer
+OutputHeading = Résultats
+StoredHeading = À l'intérieur
+PageOf = Page {0} sur {1}
+NoMorePages = Pas d'autre page.
+VerbStarted = {0} commence : {1}
+VerbCompleted.plain = {0} est terminé
+VerbCompleted.recipe = {0} est terminé : {1}
+VerbAppeared = Nouveau verbe : {0}
+VerbVanished = {0} a disparu
+VerbDanger = Attention : {0} se termine dans {1}
+VerbContinues = {0} continue : {1}
+VerbWillBecome = {0} deviendra : {1}
+VerbSlotOpened = {0} veut une carte : {1}
+OngoingSlotOpen = emplacement {0} ouvert
+OngoingSlotHolds = l'emplacement {0} contient {1}
+WindowClosed = Fenêtre fermée.
+Recipe = Recette
+DeckDraws = pioche dans
+
+# Cards
+FaceDown = carte face cachée
+Unique = unique
+DecaysIn = se dégrade dans {0}
+Quantity = fois {0}
+Aspects = Aspects
+NoAspects = Aucun aspect.
+CardsArrived = Sur la table : {0}
+CardGone = {0} a disparu
+MergedInto = {0}, maintenant {1}
+CardBecame = {0} devient {1}
+GreedyGrab = {0} prend {1}
+
+# Picking and placing
+PickCardFor.one = Choisissez une carte pour {1}. {0} carte convient.
+PickCardFor.other = Choisissez une carte pour {1}. {0} cartes conviennent.
+PickVerbFor.one = Choisissez un verbe pour {1}. {0} verbe peut la prendre.
+PickVerbFor.other = Choisissez un verbe pour {1}. {0} verbes peuvent la prendre.
+NoCardFits = Aucune carte sur la table ne convient à cet emplacement.
+NoVerbAccepts = Aucun verbe ne peut prendre cette carte pour le moment.
+EmptyTheSlot = Retirer la carte
+PickerCancelled = Annulé.
+Placed = {0} placée dans {1}
+Removed = {0} remise sur la table
+CannotPlace = Impossible de placer. {0}
+CannotMove = Cette carte ne peut pas être déplacée pour le moment.
+SlotNotEmpty = L'emplacement est vide.
+CollectedToTable = Récupération.
+TakenToTable = {0} posée sur la table
+CannotStart = Impossible de commencer : rien ici ne forme une recette qui peut débuter.
+NoWindowOpen = Aucune fenêtre de verbe n'est ouverte.
+NothingToCollect = Rien à récupérer pour l'instant.
+
+# Status and time
+Paused = En pause
+NormalSpeed = Vitesse normale
+FastSpeed = Avance rapide
+VeryFastSpeed = Très rapide
+NoBusyVerbs = Aucun verbe n'est occupé.
+NothingCompleted = Aucun verbe n'a de résultats en attente.
+Busy = {0}, {1}
+DecimalSeparator = ,
+Seconds.one = {0} seconde
+Seconds.other = {0} secondes
+SecondsFraction = {0} secondes
+Minutes.one = {0} minute
+Minutes.other = {0} minutes
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = Vous entrez dans le Mansus : {0}. Choisissez une carte face cachée.
+MansusChooseHint = Appuyez sur Entrée sur une carte face cachée pour la retourner, puis encore sur Entrée pour l'emporter.
+MansusRevealed = Retournée : {0}. Appuyez encore sur Entrée pour l'emporter.
+MansusLeft = Vous quittez le Mansus.
+MansusNoCards = Aucune carte à choisir ici pour l'instant.
+MansusChoice = Choix {0}
+
+PortalSummary = Portail : {0}
+PortalReadText = Lire ce dont je me souviens
+PortalTake = Poser {0} sur la table
+PortalCollectAll = Tout prendre et fermer le portail
+PortalWaiting = En attente dans le portail sur la table : {0}
+
+AchievementUnlocked.plain = débloqué
+AchievementUnlocked.when = débloqué {0}
+AchievementLocked = verrouillé
+
+LifeEnding = Cette vie touche à sa fin.
+
+# Help
+Help.Logo.Title = Logo et citation d'ouverture
+Help.Logo.1 = Appuyez sur une touche pour continuer vers le menu principal.
+
+Help.Menu.Title = Menu principal
+Help.Menu.1 = Les flèches haut et bas passent d'un bouton ou d'un texte à l'autre. Origine et Fin vont au premier et au dernier élément.
+Help.Menu.2 = Entrée active le bouton sélectionné. Les flèches gauche et droite changent les curseurs et les choix. Entrée sur un texte annoncé comme lien l'ouvre dans votre navigateur.
+Help.Menu.3 = Échap ferme un panneau ouvert, comme les réglages, les crédits ou les mods.
+Help.Menu.4 = [[UI_CONTINUE]] reprend votre partie sauvegardée. [[UI_BEGIN_GAME]] en commence une nouvelle. [[UI_PURGE_SAVE]] efface votre sauvegarde après confirmation.
+Help.Menu.5 = Le panneau des contenus additionnels et des mods liste les héritages supplémentaires avec lesquels vous pouvez commencer et les mods installés.
+Help.Menu.6 = Dans les réglages, choisissez un onglet avec Entrée, puis descendez jusqu'à ses curseurs. Un champ de raccourci clavier attend la nouvelle touche après Entrée.
+Help.Menu.7 = {0} lit tout ce qui est à l'écran. {1} répète l'élément sélectionné.
+
+Help.NewGame.Title = Choix d'un héritage
+Help.NewGame.1 = Les flèches haut et bas passent d'un héritage proposé à l'autre, puis à leurs descriptions et aux boutons.
+Help.NewGame.2 = Entrée sur un héritage le sélectionne ; sa description se lit alors dans les lignes de texte situées en dessous.
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]] commence une nouvelle vie avec l'héritage sélectionné. [[LEGACY_BACK_TO_MENU]] revient au menu principal.
+
+Help.GameOver.Title = La fin
+Help.GameOver.1 = Le texte de la fin a été lu à l'ouverture de l'écran. Les flèches haut et bas le relisent ligne par ligne.
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]] permet de choisir un nouvel héritage. [[LEGACY_MAIN_MENU]] revient au menu.
+Help.GameOver.3 = Le texte complet de la fin se trouve aussi dans le tampon de relecture Histoire : Contrôle plus flèche gauche ou droite pour l'atteindre.
+
+Help.Crash.Title = Écran d'erreur
+Help.Crash.1 = Le jeu a rencontré une erreur. Le bouton des fichiers journaux ouvre le dossier contenant les journaux du jeu. Le bouton Quitter ferme le jeu.
+
+Help.Options.Title = Menu des options
+Help.Options.1 = Le jeu est en pause tant que les options sont ouvertes. Les flèches haut et bas déplacent, Entrée active, Échap ferme les options.
+Help.Options.2 = Les premiers éléments sont les onglets : Entrée sur un onglet affiche ses réglages en dessous. Les flèches gauche et droite changent un curseur.
+Help.Options.3 = Entrée sur un raccourci clavier attend la nouvelle touche.
+Help.Options.4 = [[UI_RESUME]] ferme les options. [[UI_SAVEEXIT]] sauvegarde et revient au menu principal. [[UI_RESTART]] demande confirmation, puis recommence cette vie depuis le début.
+Help.Options.5 = [[UI_BROWSE]] ouvre le dossier de sauvegarde du jeu dans Windows.
+
+Help.Board.Title = La table
+Help.Board.1 = La table comporte trois groupes : Verbes, Cartes et Commandes. Les flèches gauche et droite changent de groupe, haut et bas se déplacent à l'intérieur. Origine et Fin vont au premier et au dernier élément.
+Help.Board.2 = Entrée sur un verbe ouvre sa fenêtre. Entrée sur une carte liste les verbes qui peuvent la prendre ; choisissez-en un avec Entrée pour y mettre la carte.
+Help.Board.3 = Commandes contient votre état, le bouton pour empiler les cartes, les boutons de vitesse, les options et le nom de votre personnage.
+Help.Board.4 = {2} lit tout sur l'élément sélectionné : description, aspects et leur signification, emplacements. Les lignes vont aussi dans le tampon Détails.
+Help.Board.5 = {1} répète l'élément sélectionné. {0} lit tout le groupe.
+Help.Board.6 = {3} lit votre personnage et la barre d'état : santé, passion, raison, fonds.
+Help.Board.7 = {4} lit la vitesse du jeu, chaque verbe occupé avec son temps restant, et les cartes qui se dégradent.
+Help.Board.8 = {5} va au prochain verbe dont les résultats attendent.
+Help.Board.9 = Un verbe en cours ouvre parfois un emplacement et veut une carte. C'est annoncé, et le verbe dit alors « emplacement ouvert » quand il est sélectionné. Ouvrez le verbe, ou appuyez sur Entrée sur une carte, pour le remplir avant la fin du temps.
+Help.Board.10 = Touches du jeu : Espace met en pause et reprend, N vitesse normale, M avance rapide, Tabulation empile les cartes, Échap ouvre le menu des options.
+Help.Board.11 = Le temps s'écoule tant que le jeu n'est pas en pause. Mettre en pause avec Espace est la façon la plus sûre de réfléchir.
+
+Help.Window.Title = Fenêtre d'un verbe
+Help.Window.1 = Les flèches haut et bas parcourent la fenêtre : le texte de l'histoire, les emplacements, Commencer, les résultats et Tout récupérer.
+Help.Window.2 = Entrée sur un emplacement liste les cartes de la table qui lui conviennent. Choisissez-en une avec Entrée. Si l'emplacement est occupé, le premier choix retire sa carte.
+Help.Window.3 = {6} ou Retour arrière sur un emplacement remet sa carte sur la table.
+Help.Window.4 = Quand des cartes sont placées, la prédiction de la fenêtre change ; le nom de la nouvelle recette est lu, avec « prêt à commencer » quand Commencer fonctionnera.
+Help.Window.5 = Entrée sur Commencer, ou la touche du jeu S, lance la recette. Entrée sur un résultat pose cette carte sur la table ; Tout récupérer, ou la touche du jeu C, les prend toutes.
+Help.Window.6 = Entrée sur le texte de l'histoire le lit en entier. Page précédente et page suivante, ou gauche et droite sur le texte de l'histoire, tournent les pages d'une longue histoire.
+Help.Window.7 = Échap ferme la fenêtre ; les cartes laissées dans les emplacements d'un verbe non commencé reviennent sur la table.
+
+Help.Mansus.Title = Le Mansus
+Help.Mansus.1 = Vous rêvez dans le Mansus. Des cartes face cachée attendent aux endroits que vous pouvez atteindre.
+Help.Mansus.2 = Les flèches haut et bas passent de l'une à l'autre. Entrée retourne une carte ; les autres s'effacent.
+Help.Mansus.3 = Entrée de nouveau emporte la carte révélée et le rêve prend fin.
+
+Help.Picker.Title = Choix dans une liste
+Help.Picker.1 = Les flèches haut et bas parcourent les choix, Entrée en choisit un, Échap annule.
+Help.Picker.2 = {2} lit tout sur le choix sélectionné.
+
+Help.Global.1 = Touches qui fonctionnent partout :
+Help.Global.2 = {8} ouvre cette aide. {7} change la quantité d'informations annoncées.
+Help.Global.3 = Contrôle plus flèches haut et bas lit les tampons de relecture ; Contrôle plus gauche et droite change de tampon : Événements, Détails, Histoire, Verbes, Table et État.
+Help.Global.4 = Les réglages, y compris toutes les touches, se trouvent dans BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.

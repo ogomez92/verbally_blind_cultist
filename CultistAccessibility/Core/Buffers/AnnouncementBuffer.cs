@@ -13,15 +13,18 @@ namespace CultistAccessibility.Core.Buffers
         private readonly int _maxItems;
         private int _cursor = -1;
 
-        public string Name { get; }
+        private readonly Func<string> _name;
+
+        /// <summary>Looked up on every use, so it follows the game's language.</summary>
+        public string Name => _name();
         public bool FollowLatest { get; set; }
 
         /// <summary>Rebuilds content from game state on demand. Returning null marks the buffer unavailable.</summary>
         public Func<List<string>> Refresher { get; set; }
 
-        public AnnouncementBuffer(string name, int maxItems = 200)
+        public AnnouncementBuffer(Func<string> name, int maxItems = 200)
         {
-            Name = name;
+            _name = name;
             _maxItems = maxItems;
         }
 

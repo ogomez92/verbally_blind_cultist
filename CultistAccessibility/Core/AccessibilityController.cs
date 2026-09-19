@@ -92,7 +92,7 @@ namespace CultistAccessibility.Core
                 Plugin.LogInfo("==== Debug dump: screen " + screen + ", tabletop mode " + Tabletop.ModeName);
                 Ui.DumpToLog();
                 Tabletop.DumpToLog();
-                Speech.Say("Debug information written to the log.");
+                Speech.Say(Strings.DebugDumped);
                 return;
             }
 

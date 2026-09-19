@@ -30,6 +30,7 @@ namespace CultistAccessibility.Core
         public static ConfigEntry<bool> AnnounceSituationStarted;
         public static ConfigEntry<bool> AnnounceSituationCompleted;
         public static ConfigEntry<bool> ReadCompletionText;
+        public static ConfigEntry<bool> AnnounceOngoingSlots;
         public static ConfigEntry<bool> AnnounceNewVerbs;
         public static ConfigEntry<bool> AnnounceCardChanges;
         public static ConfigEntry<bool> AnnounceCardsArriving;
@@ -75,6 +76,8 @@ namespace CultistAccessibility.Core
                 "Announce when a verb finishes and has results waiting.");
             ReadCompletionText = cfg.Bind("Announcements", "ReadCompletionText", false,
                 "Also read the full story text when a verb finishes. When false, the text goes to the Story review buffer only.");
+            AnnounceOngoingSlots = cfg.Bind("Announcements", "OngoingSlots", true,
+                "Announce when a running verb opens a slot that wants a card (the small slot shown on the verb's token).");
             AnnounceNewVerbs = cfg.Bind("Announcements", "NewVerbs", true,
                 "Announce verbs that appear or vanish on the table.");
             AnnounceCardChanges = cfg.Bind("Announcements", "CardChanges", true,

@@ -1,0 +1,319 @@
+# Cultist Simulator Accessibility - English (reference language; every other file must have the same keys).
+# Format: Key = text. {0}, {1}... are filled in by the mod; keep them. Lines starting with # are comments.
+# Plurals: Key.one / Key.few / Key.many / Key.other, chosen by the language's rule; {0} is the count.
+# Help lines: {0} read screen key, {1} repeat, {2} inspect, {3} status, {4} timers, {5} next completed verb,
+# {6} empty slot, {7} verbosity, {8} help. [[UI_CONTINUE]] is replaced by the game's own label for that key.
+
+ModLoaded = Cultist Simulator accessibility loaded. Press F1 for help at any time.
+
+# Lists and navigation
+StartOfList = Top.
+EndOfList = Bottom.
+NothingToNavigate = Nothing to navigate here.
+NothingFocused = Nothing focused.
+Unavailable = unavailable
+Selected = selected
+NotSelected = not selected
+Checked = checked
+Unchecked = not checked
+Maximum = Maximum.
+Minimum = Minimum.
+PercentValue = {0} percent
+EditingField = Editing. Type, then press Enter.
+SliderHint = Use left and right arrows to change the value.
+PressNewKey = Press the new key for this action.
+NoKeyBound = no key
+KeyBoundTo = Bound to {0}.
+PositionOf = {0} of {1}
+
+# Roles
+RoleSlider = slider
+RoleKeyBinding = key binding
+RoleTab = tab
+RoleCheckbox = checkbox
+RoleRadio = option
+RoleCombo = combo box
+RoleEdit = edit field
+RoleLink = link
+OpeningLink = Opening the link in your browser.
+RoleLegacyChoice = legacy
+CloseButton = Close
+StackCardsButton = Stack cards
+CharacterName = Character name
+
+# Menus
+LegacyInstalled = installed, press Enter to begin
+LegacyNotInstalled = not installed
+ModMoveUp = Move up in load order
+ModMoveDown = Move down in load order
+ModEnabled = enabled
+ModDisabled = disabled
+
+# Review buffers
+BufferEvents = Events
+BufferDetails = Details
+BufferStory = Story
+BufferVerbs = Verbs
+BufferTable = Table
+BufferStatus = Status
+BufferTop = Newest.
+BufferEnd = Oldest.
+AllBuffersEmpty = All review buffers are empty.
+BufferEmpty = {0} is empty.
+# {0} count, {1} buffer name
+BufferSummary.one = {1}, {0} item
+BufferSummary.other = {1}, {0} items
+
+# Help
+HelpTitle = Help: {0}
+HelpNavigationHint = Up and down arrows read the help, Escape closes it.
+HelpClosed = Help closed.
+
+# Verbosity
+VerbosityIs = Verbosity {0}.
+Verbosity.Terse = terse
+Verbosity.Normal = normal
+Verbosity.Verbose = verbose
+
+# Key names (keys not listed here are spoken by their own name: letters, digits, F1...)
+Key.Delete = Delete
+Key.Backspace = Backspace
+Key.Space = Space
+Key.Enter = Enter
+Key.Escape = Escape
+Key.Tab = Tab
+Key.Insert = Insert
+Key.Home = Home
+Key.End = End
+Key.PageUp = Page Up
+Key.PageDown = Page Down
+Key.UpArrow = Up Arrow
+Key.DownArrow = Down Arrow
+Key.LeftArrow = Left Arrow
+Key.RightArrow = Right Arrow
+
+# Screens
+Screen.Logo = Logo. Press any key to skip.
+Screen.Quote = Title quote.
+Screen.Menu = Main menu.
+Screen.Tabletop = The table.
+Screen.GameOver = The end.
+Screen.NewGame = Choose your legacy.
+Screen.Crash = The game hit an error.
+PressAnyKey = Press any key to continue.
+DebugDumped = Debug information written to the log.
+
+# The table
+GroupVerbs = Verbs
+GroupCards = Cards
+GroupControls = Controls
+# {0} group name, {1} number of items
+GroupAnnounce = {0}, {1}
+NoVerbs = No verbs on the table.
+NoCards = No cards on the table.
+VerbCount.one = {0} verb
+VerbCount.other = {0} verbs
+CardCount.one = {0} card
+CardCount.other = {0} cards
+BusyCount.one = {0} busy
+BusyCount.other = {0} busy
+DoneCount.one = {0} with results waiting
+DoneCount.other = {0} with results waiting
+TableHint = Arrows move, left and right switch between verbs, cards and controls, Enter acts, F1 for help.
+
+# Verbs (situations)
+StateIdle = idle
+StateReady = ready to start
+StateRunning = running
+StateStarting = starting
+StateComplete = results waiting
+StateHalting = halting
+StateBusy = busy
+TimeLeft = {0} left
+CardsWaiting.one = {0} card waiting
+CardsWaiting.other = {0} cards waiting
+WindowOpen = open
+SlotEmpty = empty
+SlotWord = slot
+# {0} the slot's name
+SlotNamed = {0} slot
+SlotCount.one = {0} slot
+SlotCount.other = {0} slots
+SlotGreedy = greedy: grabs a matching card by itself
+SlotConsumes = consumes its card
+SlotBlocked = blocked
+SlotRequires = accepts
+SlotForbids = forbids
+SlotEssential = must have
+BringsSlot = Brings a slot: {0}
+StartButton = Start
+StartUnavailable = Start, unavailable: these cards do not make a recipe that can begin
+CollectAll = Collect all
+OutputHeading = Results
+StoredHeading = Inside
+PageOf = Page {0} of {1}
+NoMorePages = No other pages.
+# {0} verb, {1} recipe
+VerbStarted = {0} begins: {1}
+VerbCompleted.plain = {0} is done
+VerbCompleted.recipe = {0} is done: {1}
+VerbAppeared = New verb: {0}
+VerbVanished = {0} is gone
+# {0} verb, {1} time
+VerbDanger = Warning: {0} finishes in {1}
+VerbContinues = {0} continues: {1}
+VerbWillBecome = {0} will become: {1}
+# {0} verb, {1} slot
+VerbSlotOpened = {0} wants a card: {1}
+OngoingSlotOpen = {0} slot open
+# {0} slot, {1} card
+OngoingSlotHolds = {0} slot holds {1}
+WindowClosed = Window closed.
+Recipe = Recipe
+# followed by the deck names
+DeckDraws = draws from
+
+# Cards
+FaceDown = face-down card
+Unique = unique
+DecaysIn = decays in {0}
+Quantity = x {0}
+Aspects = Aspects
+NoAspects = No aspects.
+CardsArrived = On the table: {0}
+CardGone = {0} is gone
+# {0} card, {1} new size of the stack
+MergedInto = {0}, now {1}
+CardBecame = {0} becomes {1}
+# {0} verb, {1} card
+GreedyGrab = {0} takes {1}
+
+# Picking and placing. {0} count, {1} slot or card
+PickCardFor.one = Choose a card for {1}. {0} card fits.
+PickCardFor.other = Choose a card for {1}. {0} cards fit.
+PickVerbFor.one = Choose a verb for {1}. {0} verb can take it.
+PickVerbFor.other = Choose a verb for {1}. {0} verbs can take it.
+NoCardFits = No card on the table fits this slot.
+NoVerbAccepts = No verb can take this card right now.
+EmptyTheSlot = Take the card out
+PickerCancelled = Cancelled.
+# {0} card, {1} slot
+Placed = {0} placed in {1}
+Removed = {0} returned to the table
+# {0} the game's own reason
+CannotPlace = Cannot place. {0}
+CannotMove = That card cannot be moved right now.
+SlotNotEmpty = The slot is empty.
+CollectedToTable = Collecting.
+TakenToTable = {0} taken to the table
+CannotStart = Cannot start: nothing here makes a recipe that can begin.
+NoWindowOpen = No verb window is open.
+NothingToCollect = Nothing to collect yet.
+
+# Status and time
+Paused = Paused
+NormalSpeed = Normal speed
+FastSpeed = Fast forward
+VeryFastSpeed = Very fast
+NoBusyVerbs = No verb is busy.
+NothingCompleted = No verb has results waiting.
+# {0} verb, {1} time
+Busy = {0}, {1}
+DecimalSeparator = .
+Seconds.one = {0} second
+Seconds.other = {0} seconds
+# {0} a number with one decimal, such as 4.5
+SecondsFraction = {0} seconds
+Minutes.one = {0} minute
+Minutes.other = {0} minutes
+# {0} minutes text, {1} seconds text
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = You enter the Mansus: {0}. Choose one face-down card.
+MansusChooseHint = Press Enter on a face-down card to turn it over, then Enter again to take it back with you.
+MansusRevealed = Turned over: {0}. Press Enter again to take it back.
+MansusLeft = You leave the Mansus.
+MansusNoCards = No cards to choose here yet.
+MansusChoice = Choice {0}
+
+PortalSummary = Portal: {0}
+PortalReadText = Read what I remember
+PortalTake = Take {0} to the table
+PortalCollectAll = Take everything and close the portal
+PortalWaiting = Waiting in the portal on the table: {0}
+
+AchievementUnlocked.plain = unlocked
+AchievementUnlocked.when = unlocked {0}
+AchievementLocked = locked
+
+LifeEnding = This life is ending.
+
+# Help
+Help.Logo.Title = Logo and title quote
+Help.Logo.1 = Press any key to continue to the main menu.
+
+Help.Menu.Title = Main menu
+Help.Menu.1 = Up and down arrows move between buttons and text. Home and End jump to the first and last item.
+Help.Menu.2 = Enter activates the focused button. Left and right arrows change sliders and choices. Enter on a text announced as a link opens it in your browser.
+Help.Menu.3 = Escape closes an open panel such as settings, credits or mods.
+Help.Menu.4 = [[UI_CONTINUE]] resumes your saved game. [[UI_BEGIN_GAME]] starts a new one. [[UI_PURGE_SAVE]] deletes your save after a confirmation.
+Help.Menu.5 = DLC and Mods lists the extra legacies you can start and the installed mods.
+Help.Menu.6 = In settings, choose a tab with Enter, then move down to its sliders. A key binding field waits for the new key after Enter.
+Help.Menu.7 = {0} reads everything on the screen. {1} repeats the focused item.
+
+Help.NewGame.Title = Choosing a legacy
+Help.NewGame.1 = Up and down arrows move between the legacies on offer, their descriptions and the buttons.
+Help.NewGame.2 = Enter on a legacy selects it; its description is then read in the text rows below it.
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]] begins a new life with the selected legacy. [[LEGACY_BACK_TO_MENU]] returns to the main menu.
+
+Help.GameOver.Title = The end
+Help.GameOver.1 = The ending text was read when the screen opened. Up and down arrows read it again, line by line.
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]] chooses a new legacy. [[LEGACY_MAIN_MENU]] returns to the menu.
+Help.GameOver.3 = The full ending text is also in the Story review buffer: Control plus left or right arrow to reach it.
+
+Help.Crash.Title = Error screen
+Help.Crash.1 = The game hit an error. Log Files opens the folder with the game's logs. Exit quits the game.
+
+Help.Options.Title = Options menu
+Help.Options.1 = The game is paused while the options are open. Up and down arrows move, Enter activates, Escape closes the options.
+Help.Options.2 = The first items are the tabs: Enter on a tab shows its settings below it. Left and right arrows change a slider.
+Help.Options.3 = Enter on a key binding waits for the new key.
+Help.Options.4 = [[UI_RESUME]] closes the options. [[UI_SAVEEXIT]] saves and returns to the main menu. [[UI_RESTART]] asks for confirmation, then restarts this life from its beginning.
+Help.Options.5 = [[UI_BROWSE]] opens the game's save folder in Windows.
+
+Help.Board.Title = The table
+Help.Board.1 = The table has three groups: Verbs, Cards and Controls. Left and right arrows switch group, up and down move inside it. Home and End jump to the first and last item.
+Help.Board.2 = Enter on a verb opens its window. Enter on a card lists the verbs that can take it; choose one with Enter to put the card in.
+Help.Board.3 = Controls holds your status, the stack cards button, the speed buttons, options and your character's name.
+Help.Board.4 = {2} reads everything about the focused item: description, aspects and their meaning, slots. The lines also go to the Details buffer.
+Help.Board.5 = {1} repeats the focused item. {0} reads the whole group.
+Help.Board.6 = {3} reads your character and the status bar: health, passion, reason, funds.
+Help.Board.7 = {4} reads the game speed, every busy verb with its time left, and cards that are decaying.
+Help.Board.8 = {5} jumps to the next verb with results waiting.
+Help.Board.9 = A running verb sometimes opens a slot and wants a card. This is announced, and the verb then says 'slot open' when focused. Open the verb, or press Enter on a card, to fill it before the time runs out.
+Help.Board.10 = Game keys: Space pauses and unpauses, N normal speed, M fast forward, Tab stacks cards, Escape opens the options menu.
+Help.Board.11 = Time runs while the game is not paused. Pausing with Space is the safest way to think.
+
+Help.Window.Title = A verb window
+Help.Window.1 = Up and down arrows move through the window: the story text, the slots, Start, results and Collect all.
+Help.Window.2 = Enter on a slot lists the cards on the table that fit it. Choose one with Enter. If the slot is full, the first choice takes its card out.
+Help.Window.3 = {6} or Backspace on a slot returns its card to the table.
+Help.Window.4 = When cards are placed the window's prediction changes; the new recipe name is read, with 'ready to start' when Start will work.
+Help.Window.5 = Enter on Start, or the game key S, begins the recipe. Enter on a result takes that card to the table; Collect all, or the game key C, takes them all.
+Help.Window.6 = Enter on the story text reads it in full. Page up and page down, or left and right on the story text, turn the pages of a long story.
+Help.Window.7 = Escape closes the window; cards left in slots of an unstarted verb return to the table.
+
+Help.Mansus.Title = The Mansus
+Help.Mansus.1 = You are dreaming in the Mansus. Face-down cards wait at the places you can reach.
+Help.Mansus.2 = Up and down arrows move between them. Enter turns a card over; the others fade away.
+Help.Mansus.3 = Enter again takes the revealed card back with you and the dream ends.
+
+Help.Picker.Title = Choosing from a list
+Help.Picker.1 = Up and down arrows move through the choices, Enter picks one, Escape cancels.
+Help.Picker.2 = {2} reads everything about the focused choice.
+
+Help.Global.1 = Keys that work everywhere:
+Help.Global.2 = {8} opens this help. {7} changes how much is said.
+Help.Global.3 = Control plus up and down arrows read the review buffers; control plus left and right switch buffer: Events, Details, Story, Verbs, Table and Status.
+Help.Global.4 = Settings, including every key, are in BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.

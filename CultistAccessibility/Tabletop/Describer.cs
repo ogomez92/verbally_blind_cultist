@@ -70,7 +70,7 @@ namespace CultistAccessibility.Tabletop
             if (stack != null && stack.Element != null && stack.Element.Slots != null && stack.Element.Slots.Count > 0)
             {
                 foreach (var slot in stack.Element.Slots)
-                    lines.Add("Brings a slot: " + SlotSpecText(slot));
+                    lines.Add(Strings.BringsSlot(SlotSpecText(slot)));
             }
             return lines;
         }
@@ -175,7 +175,7 @@ namespace CultistAccessibility.Tabletop
         public static string SlotSummary(Sphere slot)
         {
             if (slot == null) return "";
-            var parts = new List<string> { SlotLabel(slot) + " " + Strings.SlotWord };
+            var parts = new List<string> { Strings.SlotNamed(SlotLabel(slot)) };
             var card = slot.GetElementTokens().FirstOrDefault();
             parts.Add(card != null ? CardSummary(card) : Strings.SlotEmpty);
             var spec = slot.GoverningSphereSpec;
@@ -322,6 +322,7 @@ namespace CultistAccessibility.Tabletop
             {
                 parts.Add(Strings.TimeLeft(GameAccess.FormatTime(s.TimeRemaining)));
                 if (includeRecipe) parts.Add(RecipeLabel(s));
+                parts.Add(OngoingSlotText(s));
             }
             else if (s.StateIdentifier == StateEnum.Complete)
             {
@@ -336,6 +337,22 @@ namespace CultistAccessibility.Tabletop
             }
             if (s.IsOpen) parts.Add(Strings.WindowOpen);
             return TextCleaner.Join(parts.ToArray());
+        }
+
+        /// <summary>
+        /// The slot a running recipe opened, which the game shows as a mini slot on the verb token
+        /// (VerbManifestation.DisplayRecipeThreshold): "Offering slot open" or the card it holds.
+        /// </summary>
+        public static string OngoingSlotText(Situation s)
+        {
+            if (s == null || s.StateIdentifier != StateEnum.Ongoing) return "";
+            var parts = new List<string>();
+            foreach (var slot in GameAccess.ActiveThresholds(s))
+            {
+                var card = slot.GetElementTokens().FirstOrDefault();
+                parts.Add(card != null ? Strings.OngoingSlotHolds(SlotLabel(slot), CardName(card)) : Strings.OngoingSlotOpen(SlotLabel(slot)));
+            }
+            return string.Join(", ", parts.ToArray());
         }
 
         public static List<string> VerbDetails(Situation s)
@@ -396,6 +413,26 @@ namespace CultistAccessibility.Tabletop
             {
                 return "";
             }
+        }
+
+        /// <summary>What the game's deck details window shows for each deck of the running recipe: label, description.</summary>
+        public static List<string> DeckDetails(Situation s)
+        {
+            var lines = new List<string> { DeckEffects(s) };
+            try
+            {
+                var effects = s.CurrentRecipe?.DeckEffects;
+                if (effects == null) return lines;
+                foreach (var kv in effects)
+                {
+                    var spec = GameAccess.Compendium.GetEntityById<DeckSpec>(kv.Key);
+                    if (spec == null || spec.Id == "NULL_DECKSPEC_ID" || spec.IsHidden) continue;
+                    string desc = TextCleaner.CleanMultiline(spec.Description);
+                    if (!string.IsNullOrEmpty(desc)) lines.Add(TextCleaner.Clean(spec.Label) + ": " + desc);
+                }
+            }
+            catch { }
+            return lines;
         }
 
         public static int NotesPageCount(Situation s)

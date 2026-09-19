@@ -200,13 +200,13 @@ namespace CultistAccessibility.Tabletop
             var verbs = GameAccess.TableSituations();
             var cards = GameAccess.TableCards();
             var parts = new List<string> { Strings.ScreenName(GameScreen.Tabletop) };
-            parts.Add(verbs.Count + (verbs.Count == 1 ? " verb" : " verbs") + ", " + cards.Count + (cards.Count == 1 ? " card" : " cards"));
+            parts.Add(Strings.VerbCount(verbs.Count) + ", " + Strings.CardCount(cards.Count));
             var busy = verbs.Where(v => v.StateIdentifier == StateEnum.Ongoing).ToList();
-            if (busy.Count > 0) parts.Add(busy.Count + " busy");
+            if (busy.Count > 0) parts.Add(Strings.BusyCount(busy.Count));
             var done = verbs.Where(v => v.StateIdentifier == StateEnum.Complete).ToList();
-            if (done.Count > 0) parts.Add(done.Count + " with results waiting");
+            if (done.Count > 0) parts.Add(Strings.DoneCount(done.Count));
             try { if (GameAccess.Heart.IsPaused()) parts.Add(Strings.Paused); } catch { }
-            if (ModConfig.SpeakHints.Value) parts.Add("Arrows move, left and right switch between verbs, cards and controls, Enter acts, F1 for help.");
+            if (ModConfig.SpeakHints.Value) parts.Add(Strings.TableHint);
             SyncMode();
             string first = CurrentSummary();
             if (!string.IsNullOrEmpty(first) && _mode == Mode.Board) parts.Add(first);
@@ -710,7 +710,7 @@ namespace CultistAccessibility.Tabletop
                 var slot = kv.Value;
                 options.Add(new PickerOption
                 {
-                    Label = TextCleaner.Join(Describer.VerbName(s), Describer.SlotLabel(slot) + " " + Strings.SlotWord, Describer.StateText(s)),
+                    Label = TextCleaner.Join(Describer.VerbName(s), Strings.SlotNamed(Describer.SlotLabel(slot)), Describer.StateText(s)),
                     Details = () => Describer.VerbDetails(s),
                     OnChoose = () => PlaceAndReport(card, slot, s)
                 });
@@ -788,7 +788,7 @@ namespace CultistAccessibility.Tabletop
             var speech = new List<string> { opening };
             if (!string.IsNullOrEmpty(recipe) && recipe != Describer.VerbName(s)) speech.Add(recipe);
             if (!string.IsNullOrEmpty(text)) speech.Add(text);
-            if (slots.Count > 0) speech.Add(slots.Count == 1 ? "1 slot" : slots.Count + " slots");
+            if (slots.Count > 0) speech.Add(Strings.SlotCount(slots.Count));
             if (s.StateIdentifier == StateEnum.Complete)
             {
                 int n = Describer.OutputCount(s);
@@ -871,7 +871,7 @@ namespace CultistAccessibility.Tabletop
                         {
                             Key = "deck",
                             Summary = () => Describer.DeckEffects(s),
-                            Details = () => new List<string> { Describer.DeckEffects(s) },
+                            Details = () => Describer.DeckDetails(s),
                             Activate = () => Speech.Say(Describer.DeckEffects(s))
                         });
                     }
@@ -1152,7 +1152,7 @@ namespace CultistAccessibility.Tabletop
         {
             string label = TextCleaner.Clean(sphere.GoverningSphereSpec?.Label);
             if (!string.IsNullOrEmpty(label)) return label;
-            return "Choice " + n;
+            return Strings.MansusChoice(n);
         }
 
         private void ChooseInMansus(Token card, Sphere egress)

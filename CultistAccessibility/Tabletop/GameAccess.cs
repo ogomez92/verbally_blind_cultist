@@ -240,15 +240,15 @@ namespace CultistAccessibility.Tabletop
             if (seconds < 10f)
             {
                 float rounded = Mathf.Round(seconds * 10f) / 10f;
-                return rounded.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + (Math.Abs(rounded - 1f) < 0.01f ? " second" : " seconds");
+                if (Math.Abs(rounded - Mathf.Round(rounded)) < 0.01f) return Strings.Seconds(Mathf.RoundToInt(rounded));
+                return Strings.SecondsFraction(rounded);
             }
             int total = Mathf.CeilToInt(seconds);
-            if (total < 60) return total + " seconds";
+            if (total < 60) return Strings.Seconds(total);
             int m = total / 60;
             int s = total % 60;
-            string mins = m == 1 ? "1 minute" : m + " minutes";
-            if (s == 0) return mins;
-            return mins + " " + s + (s == 1 ? " second" : " seconds");
+            if (s == 0) return Strings.Minutes(m);
+            return Strings.MinutesAndSeconds(Strings.Minutes(m), Strings.Seconds(s));
         }
 
         public static void PointCameraAt(Token token)

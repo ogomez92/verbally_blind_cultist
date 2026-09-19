@@ -18,18 +18,19 @@ namespace CultistAccessibility.Help
     /// <summary>A help context built from a predicate and a line provider.</summary>
     internal sealed class HelpContext : IHelpContext
     {
+        private readonly Func<string> _name;
         private readonly Func<bool> _isActive;
         private readonly Func<IEnumerable<string>> _lines;
 
-        public HelpContext(string name, int priority, Func<bool> isActive, Func<IEnumerable<string>> lines)
+        public HelpContext(Func<string> name, int priority, Func<bool> isActive, Func<IEnumerable<string>> lines)
         {
-            ContextName = name;
+            _name = name;
             Priority = priority;
             _isActive = isActive;
             _lines = lines;
         }
 
-        public string ContextName { get; }
+        public string ContextName => _name();
         public int Priority { get; }
         public bool IsActive() => _isActive();
         public IEnumerable<string> GetHelpLines() => _lines();

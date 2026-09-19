@@ -17,7 +17,7 @@ namespace CultistAccessibility
     {
         public const string Guid = "accessibility.cultistsimulator.screenreader";
         public const string ModName = "Cultist Simulator Accessibility";
-        public const string ModVersion = "1.0.0";
+        public const string ModVersion = "1.1.0";
 
         internal static Plugin Instance { get; private set; }
         internal static ManualLogSource Log { get; private set; }

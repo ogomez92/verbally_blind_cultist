@@ -9,7 +9,7 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <!-- The game is 32-bit; the plugin itself is AnyCPU managed code. -->
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>portable</DebugType>
@@ -44,6 +44,11 @@
     <Reference Include="SecretHistories.Constants"><HintPath>$(ManagedPath)\SecretHistories.Constants.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="Assembly-CSharp"><HintPath>$(ManagedPath)\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="UIWidgets"><HintPath>$(ManagedPath)\UIWidgets.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <!-- Translations of the mod's own speech, one per game culture id (see Core/Loc.cs). -->
+  <ItemGroup>
+    <EmbeddedResource Include="Lang\*.txt" WithCulture="false" LogicalName="CultistAccessibility.Lang.%(Filename).txt" />
   </ItemGroup>
 
   <!-- Build the x64 speech host alongside the plugin. -->

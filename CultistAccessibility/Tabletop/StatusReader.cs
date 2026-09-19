@@ -86,7 +86,7 @@ namespace CultistAccessibility.Tabletop
                 .OrderBy(v => v.TimeRemaining).ToList();
             if (busy.Count == 0) parts.Add(Strings.NoBusyVerbs);
             foreach (var v in busy)
-                parts.Add(TextCleaner.Join(Strings.Busy(Describer.VerbName(v), GameAccess.FormatTime(v.TimeRemaining)), Describer.RecipeLabel(v)));
+                parts.Add(TextCleaner.Join(Strings.Busy(Describer.VerbName(v), GameAccess.FormatTime(v.TimeRemaining)), Describer.RecipeLabel(v), Describer.OngoingSlotText(v)));
             var done = verbs.Where(v => v.StateIdentifier == StateEnum.Complete).ToList();
             foreach (var v in done)
                 parts.Add(TextCleaner.Join(Describer.VerbName(v), Strings.StateComplete));

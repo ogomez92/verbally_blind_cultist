@@ -148,7 +148,8 @@ namespace CultistAccessibility.Navigation
         private static string GetLabelInner(UiItem item)
         {
             if (item.Kind == UiItemKind.Custom) return item.CustomLabel?.Invoke() ?? "";
-            if (item.Kind == UiItemKind.Text) return TextCleaner.CleanMultiline(ReadText(item.Text));
+            if (item.Kind == UiItemKind.Text)
+                return TextCleaner.Join(TextCleaner.CleanMultiline(ReadText(item.Text)), FirstLink(item) != null ? Strings.RoleLink : "");
 
             GameObject go = item.Go;
             string state = StateSuffix(item);
@@ -258,6 +259,23 @@ namespace CultistAccessibility.Navigation
             }
         }
 
+        /// <summary>The address of the first link in a text the game makes clickable (TextWithHyperlinks), or null.</summary>
+        public static string FirstLink(UiItem item)
+        {
+            try
+            {
+                if (item?.Text == null || item.Go.GetComponent<TextWithHyperlinks>() == null) return null;
+                var info = item.Text.textInfo;
+                if (info == null || info.linkCount == 0) return null;
+                string url = info.linkInfo[0].GetLinkID();
+                return string.IsNullOrEmpty(url) ? null : url;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private static string StateSuffix(UiItem item)
         {
             if (item.Selectable != null && !item.Selectable.IsInteractable()) return Strings.Unavailable;
@@ -270,7 +288,7 @@ namespace CultistAccessibility.Navigation
             float range = s.maxValue - s.minValue;
             if (range <= 0) return s.value.ToString("0.##");
             int pct = (int)Math.Round((s.value - s.minValue) / range * 100f);
-            return pct + " " + Strings.Percent;
+            return Strings.PercentValue(pct);
         }
 
         private static string LabelNearInputField(TMP_InputField f)

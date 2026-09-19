@@ -23,6 +23,9 @@ namespace CultistAccessibility.Tabletop
             public string RecipeId;
             public bool Warned;
             public string Verb;
+            public float TimeRemaining;
+            // Slots of the running recipe already announced (or present when the table was loaded).
+            public readonly HashSet<SecretHistories.Spheres.Sphere> KnownSlots = new HashSet<SecretHistories.Spheres.Sphere>();
         }
 
         private readonly Dictionary<Situation, Snapshot> _snaps = new Dictionary<Situation, Snapshot>();
@@ -41,7 +44,12 @@ namespace CultistAccessibility.Tabletop
         public void Arm()
         {
             _snaps.Clear();
-            foreach (var s in GameAccess.TableSituations()) _snaps[s] = Take(s);
+            foreach (var s in GameAccess.TableSituations())
+            {
+                var snap = Take(s);
+                foreach (var slot in GameAccess.ActiveThresholds(s)) snap.KnownSlots.Add(slot);
+                _snaps[s] = snap;
+            }
             _armed = true;
         }
 
@@ -51,7 +59,8 @@ namespace CultistAccessibility.Tabletop
             {
                 State = s.StateIdentifier,
                 RecipeId = SafeRecipeId(s),
-                Verb = Describer.VerbName(s)
+                Verb = Describer.VerbName(s),
+                TimeRemaining = s.TimeRemaining
             };
         }
 
@@ -111,6 +120,9 @@ namespace CultistAccessibility.Tabletop
                 snap.State = now;
                 snap.RecipeId = recipeId;
                 snap.Warned = false;
+                snap.TimeRemaining = s.TimeRemaining;
+                // Slots of the new state are announced by the next poll, after this line.
+                snap.KnownSlots.Clear();
                 if (now == StateEnum.Ongoing && ModConfig.AnnounceSituationStarted.Value)
                 {
                     string time = GameAccess.FormatTime(s.TimeRemaining);
@@ -129,21 +141,55 @@ namespace CultistAccessibility.Tabletop
 
             if (now == StateEnum.Ongoing)
             {
-                if (recipeId != snap.RecipeId)
+                // The timer went back up: a linked recipe (or the same one again) started between two polls.
+                bool restarted = s.TimeRemaining > snap.TimeRemaining + 1f;
+                snap.TimeRemaining = s.TimeRemaining;
+                if (recipeId != snap.RecipeId || restarted)
                 {
-                    // A linked recipe took over without passing through another polled state.
                     snap.RecipeId = recipeId;
                     snap.Warned = false;
+                    if (restarted) snap.KnownSlots.Clear();
+                    // A card in the running recipe's slot changes what comes next (OngoingState.UpdateRecipePrediction
+                    // shows the alternative's text in the window); the timer keeps running.
+                    bool prediction = !restarted && IsPrediction(s);
                     if (ModConfig.AnnounceSituationStarted.Value)
-                        Speech.SayEvent(Strings.VerbContinues(Describer.VerbName(s), Describer.RecipeLabel(s), GameAccess.FormatTime(s.TimeRemaining)));
+                    {
+                        string line = prediction
+                            ? Strings.VerbWillBecome(Describer.VerbName(s), Describer.RecipeLabel(s))
+                            : Strings.VerbContinues(Describer.VerbName(s), Describer.RecipeLabel(s), GameAccess.FormatTime(s.TimeRemaining));
+                        if (prediction && s.IsOpen) line = TextCleaner.Sentences(new[] { line, Describer.RecipeText(s) });
+                        Speech.SayEvent(line);
+                    }
                     StoreStory(s);
                 }
+                AnnounceNewSlots(s, snap);
                 if (!snap.Warned && ModConfig.AnnounceTimerWarnings.Value && IsDangerous(s) && s.TimeRemaining <= ModConfig.TimerWarningSeconds.Value && s.TimeRemaining > 0f)
                 {
                     snap.Warned = true;
                     Speech.SayEvent(TextCleaner.Join(Strings.VerbDanger(Describer.VerbName(s), GameAccess.FormatTime(s.TimeRemaining)), Describer.RecipeLabel(s)));
                 }
             }
+        }
+
+        private static bool IsPrediction(Situation s)
+        {
+            try { return s.CurrentRecipe != null && s.FallbackRecipe != null && s.CurrentRecipe != s.FallbackRecipe; }
+            catch { return false; }
+        }
+
+        /// <summary>
+        /// A running recipe opened a slot: the game shows a mini slot on the verb token with a sound
+        /// (VerbManifestation.ShowMiniSlot). Greedy slots that already grabbed their card were announced by CardPatches.
+        /// </summary>
+        private static void AnnounceNewSlots(Situation s, Snapshot snap)
+        {
+            foreach (var slot in GameAccess.ActiveThresholds(s))
+            {
+                if (!snap.KnownSlots.Add(slot)) continue;
+                if (!ModConfig.AnnounceOngoingSlots.Value || slot.GetElementTokens().Any()) continue;
+                Speech.SayEvent(Strings.VerbSlotOpened(Describer.VerbName(s), Describer.SlotSummary(slot)));
+            }
+            snap.KnownSlots.RemoveWhere(k => k == null || k.Defunct);
         }
 
         /// <summary>The recipe signals an ending (the game changes the music and countdown colour for these).</summary>

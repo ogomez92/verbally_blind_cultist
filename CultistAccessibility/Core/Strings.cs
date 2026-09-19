@@ -1,204 +1,228 @@
+using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
+
 namespace CultistAccessibility.Core
 {
     /// <summary>
     /// Every string the mod itself speaks (game text comes from the game's own localisation).
-    /// Kept in one place so the mod can be translated later.
+    /// The texts live in Lang/&lt;culture&gt;.txt under the member's name and follow the game's language (see Loc).
+    /// Nothing here may be cached by callers across frames: the player can change language at any time.
     /// </summary>
     internal static class Strings
     {
-        public const string ModLoaded = "Cultist Simulator accessibility loaded. Press F1 for help at any time.";
+        private static string T([CallerMemberName] string key = null) => Loc.Get(key);
+        private static string F(string key, params object[] args) => Loc.Format(key, args);
+
+        public static string ModLoaded => T();
 
         // Lists and navigation
-        public const string StartOfList = "Top.";
-        public const string EndOfList = "Bottom.";
-        public const string NothingToNavigate = "Nothing to navigate here.";
-        public const string NothingFocused = "Nothing focused.";
-        public const string Unavailable = "unavailable";
-        public const string Selected = "selected";
-        public const string NotSelected = "not selected";
-        public const string Checked = "checked";
-        public const string Unchecked = "not checked";
-        public const string Maximum = "Maximum.";
-        public const string Minimum = "Minimum.";
-        public const string Percent = "percent";
-        public const string EditingField = "Editing. Type, then press Enter.";
-        public const string SliderHint = "Use left and right arrows to change the value.";
-        public const string PressNewKey = "Press the new key for this action.";
-        public const string NoKeyBound = "no key";
-        public static string KeyBoundTo(string key) => "Bound to " + key + ".";
-        public static string PositionOf(int i, int n) => i + " of " + n;
+        public static string StartOfList => T();
+        public static string EndOfList => T();
+        public static string NothingToNavigate => T();
+        public static string NothingFocused => T();
+        public static string Unavailable => T();
+        public static string Selected => T();
+        public static string NotSelected => T();
+        public static string Checked => T();
+        public static string Unchecked => T();
+        public static string Maximum => T();
+        public static string Minimum => T();
+        public static string PercentValue(int percent) => F(nameof(PercentValue), percent);
+        public static string EditingField => T();
+        public static string SliderHint => T();
+        public static string PressNewKey => T();
+        public static string NoKeyBound => T();
+        public static string KeyBoundTo(string key) => F(nameof(KeyBoundTo), key);
+        public static string PositionOf(int i, int n) => F(nameof(PositionOf), i, n);
 
         // Roles
-        public const string RoleSlider = "slider";
-        public const string RoleKeyBinding = "key binding";
-        public const string RoleTab = "tab";
-        public const string RoleCheckbox = "checkbox";
-        public const string RoleRadio = "option";
-        public const string RoleCombo = "combo box";
-        public const string RoleEdit = "edit field";
-        public const string RoleLink = "link";
-        public const string RoleLegacyChoice = "legacy";
-        public const string CloseButton = "Close";
-        public const string StackCardsButton = "Stack cards";
-        public const string CharacterName = "Character name";
+        public static string RoleSlider => T();
+        public static string RoleKeyBinding => T();
+        public static string RoleTab => T();
+        public static string RoleCheckbox => T();
+        public static string RoleRadio => T();
+        public static string RoleCombo => T();
+        public static string RoleEdit => T();
+        public static string RoleLink => T();
+        public static string OpeningLink => T();
+        public static string RoleLegacyChoice => T();
+        public static string CloseButton => T();
+        public static string StackCardsButton => T();
+        public static string CharacterName => T();
 
         // Menus
-        public const string LegacyInstalled = "installed, press Enter to begin";
-        public const string LegacyNotInstalled = "not installed";
-        public static string LegacyNumber(int n) => "Legacy " + n;
-        public const string ModMoveUp = "Move up in load order";
-        public const string ModMoveDown = "Move down in load order";
-        public const string ModEnabled = "enabled";
-        public const string ModDisabled = "disabled";
+        public static string LegacyInstalled => T();
+        public static string LegacyNotInstalled => T();
+        public static string ModMoveUp => T();
+        public static string ModMoveDown => T();
+        public static string ModEnabled => T();
+        public static string ModDisabled => T();
 
         // Buffers
-        public const string BufferEvents = "Events";
-        public const string BufferDetails = "Details";
-        public const string BufferStory = "Story";
-        public const string BufferVerbs = "Verbs";
-        public const string BufferTable = "Table";
-        public const string BufferStatus = "Status";
-        public const string BufferTop = "Newest.";
-        public const string BufferEnd = "Oldest.";
-        public const string AllBuffersEmpty = "All review buffers are empty.";
-        public static string BufferEmpty(string name) => name + " is empty.";
-        public static string BufferSummary(string name, int count) => name + ", " + count + (count == 1 ? " item" : " items");
+        public static string BufferEvents => T();
+        public static string BufferDetails => T();
+        public static string BufferStory => T();
+        public static string BufferVerbs => T();
+        public static string BufferTable => T();
+        public static string BufferStatus => T();
+        public static string BufferTop => T();
+        public static string BufferEnd => T();
+        public static string AllBuffersEmpty => T();
+        public static string BufferEmpty(string name) => F(nameof(BufferEmpty), name);
+        public static string BufferSummary(string name, int count) => Loc.Plural(nameof(BufferSummary), count, name);
 
         // Help
-        public static string HelpTitle(string context) => "Help: " + context;
-        public const string HelpNavigationHint = "Up and down arrows read the help, Escape closes it.";
-        public const string HelpClosed = "Help closed.";
+        public static string HelpTitle(string context) => F(nameof(HelpTitle), context);
+        public static string HelpNavigationHint => T();
+        public static string HelpClosed => T();
 
         // Verbosity
-        public static string VerbosityIs(Verbosity v) => "Verbosity " + v.ToString().ToLowerInvariant() + ".";
+        public static string VerbosityIs(Verbosity v) => F(nameof(VerbosityIs), Loc.Get("Verbosity." + v));
+
+        /// <summary>Spoken name of a key: letters, digits and function keys as they are, named keys translated.</summary>
+        public static string KeyName(Key k)
+        {
+            string key = "Key." + k;
+            return Loc.Has(key) ? Loc.Get(key) : k.ToString();
+        }
 
         // Screens
         public static string ScreenName(GameScreen s)
         {
-            switch (s)
-            {
-                case GameScreen.Logo: return "Logo. Press any key to skip.";
-                case GameScreen.Quote: return "Title quote.";
-                case GameScreen.Menu: return "Main menu.";
-                case GameScreen.Tabletop: return "The table.";
-                case GameScreen.GameOver: return "The end.";
-                case GameScreen.NewGame: return "Choose your legacy.";
-                case GameScreen.Crash: return "The game hit an error.";
-                default: return "";
-            }
+            string key = "Screen." + s;
+            return Loc.Has(key) ? Loc.Get(key) : "";
         }
-        public const string PressAnyKey = "Press any key to continue.";
+        public static string PressAnyKey => T();
+        public static string DebugDumped => T();
 
         // Tabletop groups
-        public const string GroupVerbs = "Verbs";
-        public const string GroupCards = "Cards";
-        public const string GroupControls = "Controls";
-        public const string GroupMansus = "The Mansus";
-        public static string GroupAnnounce(string name, int count) => name + ", " + count;
-        public const string NoVerbs = "No verbs on the table.";
-        public const string NoCards = "No cards on the table.";
-        public const string TableLoading = "The table is still being laid out.";
+        public static string GroupVerbs => T();
+        public static string GroupCards => T();
+        public static string GroupControls => T();
+        public static string GroupAnnounce(string name, int count) => F(nameof(GroupAnnounce), name, count);
+        public static string NoVerbs => T();
+        public static string NoCards => T();
+        public static string VerbCount(int n) => Loc.Plural(nameof(VerbCount), n);
+        public static string CardCount(int n) => Loc.Plural(nameof(CardCount), n);
+        public static string BusyCount(int n) => Loc.Plural(nameof(BusyCount), n);
+        public static string DoneCount(int n) => Loc.Plural(nameof(DoneCount), n);
+        public static string TableHint => T();
 
         // Situations
-        public const string StateIdle = "idle";
-        public const string StateReady = "ready to start";
-        public const string StateRunning = "running";
-        public const string StateStarting = "starting";
-        public const string StateComplete = "results waiting";
-        public const string StateHalting = "halting";
-        public const string StateBusy = "busy";
-        public static string TimeLeft(string time) => time + " left";
-        public static string CardsWaiting(int n) => n == 1 ? "1 card waiting" : n + " cards waiting";
-        public const string WindowOpen = "open";
-        public const string SlotEmpty = "empty";
-        public const string SlotWord = "slot";
-        public const string SlotGreedy = "greedy: grabs a matching card by itself";
-        public const string SlotConsumes = "consumes its card";
-        public const string SlotBlocked = "blocked";
-        public const string SlotRequires = "accepts";
-        public const string SlotForbids = "forbids";
-        public const string SlotEssential = "must have";
-        public const string StartButton = "Start";
-        public const string StartUnavailable = "Start, unavailable: these cards do not make a recipe that can begin";
-        public const string CollectAll = "Collect all";
-        public const string OutputHeading = "Results";
-        public const string StoredHeading = "Inside";
-        public const string NotesPage = "page";
-        public static string PageOf(int i, int n) => "Page " + i + " of " + n;
-        public const string NoMorePages = "No other pages.";
-        public static string VerbStarted(string verb, string recipe, string time) => verb + " begins: " + recipe + (string.IsNullOrEmpty(time) ? "" : ", " + time);
-        public static string VerbCompleted(string verb, string recipe) => verb + " is done" + (string.IsNullOrEmpty(recipe) ? "" : ": " + recipe);
-        public static string VerbAppeared(string verb) => "New verb: " + verb;
-        public static string VerbVanished(string verb) => verb + " is gone";
-        public static string VerbDanger(string verb, string time) => "Warning: " + verb + " finishes in " + time;
-        public static string VerbContinues(string verb, string recipe, string time) => verb + " continues: " + recipe + (string.IsNullOrEmpty(time) ? "" : ", " + time);
-        public const string WindowClosed = "Window closed.";
-        public const string Recipe = "Recipe";
-        public const string DeckDraws = "draws from";
+        public static string StateIdle => T();
+        public static string StateReady => T();
+        public static string StateRunning => T();
+        public static string StateStarting => T();
+        public static string StateComplete => T();
+        public static string StateHalting => T();
+        public static string StateBusy => T();
+        public static string TimeLeft(string time) => F(nameof(TimeLeft), time);
+        public static string CardsWaiting(int n) => Loc.Plural(nameof(CardsWaiting), n);
+        public static string WindowOpen => T();
+        public static string SlotEmpty => T();
+        public static string SlotWord => T();
+        public static string SlotNamed(string label) => F(nameof(SlotNamed), label);
+        public static string SlotCount(int n) => Loc.Plural(nameof(SlotCount), n);
+        public static string SlotGreedy => T();
+        public static string SlotConsumes => T();
+        public static string SlotBlocked => T();
+        public static string SlotRequires => T();
+        public static string SlotForbids => T();
+        public static string SlotEssential => T();
+        public static string BringsSlot(string slot) => F(nameof(BringsSlot), slot);
+        public static string StartButton => T();
+        public static string StartUnavailable => T();
+        public static string CollectAll => T();
+        public static string OutputHeading => T();
+        public static string StoredHeading => T();
+        public static string PageOf(int i, int n) => F(nameof(PageOf), i, n);
+        public static string NoMorePages => T();
+        public static string VerbStarted(string verb, string recipe, string time) => WithTime(F(nameof(VerbStarted), verb, recipe), time);
+        public static string VerbCompleted(string verb, string recipe) =>
+            string.IsNullOrEmpty(recipe) ? F("VerbCompleted.plain", verb) : F("VerbCompleted.recipe", verb, recipe);
+        public static string VerbAppeared(string verb) => F(nameof(VerbAppeared), verb);
+        public static string VerbVanished(string verb) => F(nameof(VerbVanished), verb);
+        public static string VerbDanger(string verb, string time) => F(nameof(VerbDanger), verb, time);
+        public static string VerbContinues(string verb, string recipe, string time) => WithTime(F(nameof(VerbContinues), verb, recipe), time);
+        public static string VerbWillBecome(string verb, string recipe) => F(nameof(VerbWillBecome), verb, recipe);
+        public static string VerbSlotOpened(string verb, string slot) => F(nameof(VerbSlotOpened), verb, slot);
+        public static string OngoingSlotOpen(string slot) => F(nameof(OngoingSlotOpen), slot);
+        public static string OngoingSlotHolds(string slot, string card) => F(nameof(OngoingSlotHolds), slot, card);
+        public static string WindowClosed => T();
+        public static string Recipe => T();
+        public static string DeckDraws => T();
+
+        private static string WithTime(string text, string time) => string.IsNullOrEmpty(time) ? text : text + ", " + time;
 
         // Cards
-        public const string FaceDown = "face-down card";
-        public const string Unique = "unique";
-        public static string DecaysIn(string time) => "decays in " + time;
-        public static string Quantity(int n) => "x " + n;
-        public const string Aspects = "Aspects";
-        public const string NoAspects = "No aspects.";
-        public static string CardArrived(string card) => card + " arrives";
-        public static string CardsArrived(string list) => "On the table: " + list;
-        public static string CardGone(string card) => card + " is gone";
-        public static string MergedInto(string card, int total) => card + ", now " + total;
-        public static string CardBecame(string from, string to) => from + " becomes " + to;
-        public static string GreedyGrab(string verb, string card) => verb + " takes " + card;
-        public const string InSlot = "in";
+        public static string FaceDown => T();
+        public static string Unique => T();
+        public static string DecaysIn(string time) => F(nameof(DecaysIn), time);
+        public static string Quantity(int n) => F(nameof(Quantity), n);
+        public static string Aspects => T();
+        public static string NoAspects => T();
+        public static string CardsArrived(string list) => F(nameof(CardsArrived), list);
+        public static string CardGone(string card) => F(nameof(CardGone), card);
+        public static string MergedInto(string card, int total) => F(nameof(MergedInto), card, total);
+        public static string CardBecame(string from, string to) => F(nameof(CardBecame), from, to);
+        public static string GreedyGrab(string verb, string card) => F(nameof(GreedyGrab), verb, card);
 
         // Picking and placing
-        public static string PickCardFor(string slot, int n) => "Choose a card for " + slot + ". " + n + (n == 1 ? " card fits." : " cards fit.");
-        public static string PickVerbFor(string card, int n) => "Choose a verb for " + card + ". " + n + (n == 1 ? " verb can take it." : " verbs can take it.");
-        public const string NoCardFits = "No card on the table fits this slot.";
-        public const string NoVerbAccepts = "No verb can take this card right now.";
-        public const string EmptyTheSlot = "Take the card out";
-        public const string PickerCancelled = "Cancelled.";
-        public static string Placed(string card, string slot) => card + " placed in " + slot;
-        public static string Removed(string card) => card + " returned to the table";
-        public static string CannotPlace(string reason) => "Cannot place. " + reason;
-        public const string CannotMove = "That card cannot be moved right now.";
-        public const string SlotNotEmpty = "The slot is empty.";
-        public static string SentTo(string card, string verb) => card + " sent to " + verb;
-        public const string CollectedToTable = "Collecting.";
-        public static string TakenToTable(string card) => card + " taken to the table";
-        public const string CannotStart = "Cannot start: nothing here makes a recipe that can begin.";
-        public const string NoWindowOpen = "No verb window is open.";
-        public const string NothingToCollect = "Nothing to collect yet.";
-        public const string Started = "Started.";
+        public static string PickCardFor(string slot, int n) => Loc.Plural(nameof(PickCardFor), n, slot);
+        public static string PickVerbFor(string card, int n) => Loc.Plural(nameof(PickVerbFor), n, card);
+        public static string NoCardFits => T();
+        public static string NoVerbAccepts => T();
+        public static string EmptyTheSlot => T();
+        public static string PickerCancelled => T();
+        public static string Placed(string card, string slot) => F(nameof(Placed), card, slot);
+        public static string Removed(string card) => F(nameof(Removed), card);
+        public static string CannotPlace(string reason) => F(nameof(CannotPlace), reason);
+        public static string CannotMove => T();
+        public static string SlotNotEmpty => T();
+        public static string CollectedToTable => T();
+        public static string TakenToTable(string card) => F(nameof(TakenToTable), card);
+        public static string CannotStart => T();
+        public static string NoWindowOpen => T();
+        public static string NothingToCollect => T();
 
         // Status and time
-        public const string Paused = "Paused";
-        public const string NormalSpeed = "Normal speed";
-        public const string FastSpeed = "Fast forward";
-        public const string VeryFastSpeed = "Very fast";
-        public const string NoBusyVerbs = "No verb is busy.";
-        public const string NothingCompleted = "No verb has results waiting.";
-        public static string Busy(string verb, string time) => verb + ", " + time;
+        public static string Paused => T();
+        public static string NormalSpeed => T();
+        public static string FastSpeed => T();
+        public static string VeryFastSpeed => T();
+        public static string NoBusyVerbs => T();
+        public static string NothingCompleted => T();
+        public static string Busy(string verb, string time) => F(nameof(Busy), verb, time);
+        public static string Seconds(int n) => Loc.Plural(nameof(Seconds), n);
+        /// <summary>Tenths of a second below ten seconds: "4.5 seconds", with the language's decimal separator.</summary>
+        public static string SecondsFraction(float seconds)
+        {
+            string number = seconds.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture).Replace(".", Loc.Get("DecimalSeparator"));
+            return F(nameof(SecondsFraction), number);
+        }
+        public static string Minutes(int n) => Loc.Plural(nameof(Minutes), n);
+        public static string MinutesAndSeconds(string minutes, string seconds) => F(nameof(MinutesAndSeconds), minutes, seconds);
 
         // Mansus
-        public static string MansusEntered(string where) => "You enter the Mansus: " + where + ". Choose one face-down card.";
-        public const string MansusChooseHint = "Press Enter on a face-down card to turn it over, then Enter again to take it back with you.";
-        public static string MansusRevealed(string card) => "Turned over: " + card + ". Press Enter again to take it back.";
-        public const string MansusLeft = "You leave the Mansus.";
-        public const string MansusNoCards = "No cards to choose here yet.";
-        public static string MansusTake(string card) => "Take " + card + " back to the waking world";
+        public static string MansusEntered(string where) => F(nameof(MansusEntered), where);
+        public static string MansusChooseHint => T();
+        public static string MansusRevealed(string card) => F(nameof(MansusRevealed), card);
+        public static string MansusLeft => T();
+        public static string MansusNoCards => T();
+        public static string MansusChoice(int n) => F(nameof(MansusChoice), n);
 
-        public static string PortalSummary(string label, int cards) => "Portal: " + label + (cards > 0 ? ", " + CardsWaiting(cards) : "");
-        public const string PortalReadText = "Read what I remember";
-        public static string PortalTake(string card) => "Take " + card + " to the table";
-        public const string PortalCollectAll = "Take everything and close the portal";
-        public static string PortalWaiting(string card) => "Waiting in the portal on the table: " + card;
+        public static string PortalSummary(string label, int cards) =>
+            F(nameof(PortalSummary), label) + (cards > 0 ? ", " + CardsWaiting(cards) : "");
+        public static string PortalReadText => T();
+        public static string PortalTake(string card) => F(nameof(PortalTake), card);
+        public static string PortalCollectAll => T();
+        public static string PortalWaiting(string card) => F(nameof(PortalWaiting), card);
 
-        public static string AchievementUnlocked(string when) => string.IsNullOrEmpty(when) ? "unlocked" : "unlocked " + when;
-        public const string AchievementLocked = "locked";
+        public static string AchievementUnlocked(string when) =>
+            string.IsNullOrEmpty(when) ? Loc.Get("AchievementUnlocked.plain") : F("AchievementUnlocked.when", when);
+        public static string AchievementLocked => T();
 
         // Game over
-        public const string LifeEnding = "This life is ending.";
-        public const string GameOverHint = "Up and down arrows read the ending and the buttons.";
+        public static string LifeEnding => T();
     }
 }

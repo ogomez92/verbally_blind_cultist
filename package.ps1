@@ -1,6 +1,6 @@
 # Builds a release zip: BepInEx 5 (x86) + the plugin + the x64 speech host with Prism and its licences + README.
 # No game code or assets are included.
-param([string]$Version = "1.0.0")
+param([string]$Version = "1.1.0")
 
 $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
@@ -24,8 +24,9 @@ Copy-Item "$deployed\CultistAccessibility.dll" $pluginDest
 Copy-Item "$deployed\SpeechHost" $pluginDest -Recurse
 Get-ChildItem $pluginDest -Recurse -Filter "*.pdb" | Remove-Item -Force
 
-# 3. Documentation.
+# 3. Documentation, and the built-in translations as a reference for corrections (see README, Languages).
 Copy-Item "$root\README.md" $stage
+Copy-Item "$root\CultistAccessibility\Lang" (Join-Path $stage "translations") -Recurse
 
 $zip = Join-Path $root "release\CultistAccessibility-$Version.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }

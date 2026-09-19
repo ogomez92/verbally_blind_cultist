@@ -800,6 +800,14 @@ namespace CultistAccessibility.Navigation
                     _nextRefresh = 0;
                     return;
                 }
+                // Text with links (TextWithHyperlinks opens the link under the mouse): open them from the keyboard.
+                string url = UiReader.FirstLink(item);
+                if (url != null)
+                {
+                    Speech.Say(Strings.OpeningLink);
+                    Application.OpenURL(url);
+                    return;
+                }
                 ReadFocusedFull();
                 return;
             }

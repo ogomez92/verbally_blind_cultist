@@ -1,0 +1,323 @@
+# Cultist Simulator Accessibility - Русский. Ключи и формат описаны в en.txt.
+# Множественное число: .one (1, 21), .few (2-4, 22-24), .many (5-20, 25...), .other (запасной вариант).
+
+ModLoaded = Модификация доступности Cultist Simulator загружена. Нажмите F1 в любой момент, чтобы открыть справку.
+
+# Lists and navigation
+StartOfList = Начало.
+EndOfList = Конец.
+NothingToNavigate = Здесь не по чему перемещаться.
+NothingFocused = Ничего не выбрано.
+Unavailable = недоступно
+Selected = выбрано
+NotSelected = не выбрано
+Checked = отмечено
+Unchecked = не отмечено
+Maximum = Максимум.
+Minimum = Минимум.
+PercentValue = {0} процентов
+EditingField = Редактирование. Введите текст и нажмите Enter.
+SliderHint = Меняйте значение стрелками влево и вправо.
+PressNewKey = Нажмите новую клавишу для этого действия.
+NoKeyBound = нет клавиши
+KeyBoundTo = Назначена клавиша {0}.
+PositionOf = {0} из {1}
+
+# Roles
+RoleSlider = ползунок
+RoleKeyBinding = назначение клавиши
+RoleTab = вкладка
+RoleCheckbox = флажок
+RoleRadio = вариант
+RoleCombo = выпадающий список
+RoleEdit = поле ввода
+RoleLink = ссылка
+OpeningLink = Ссылка открывается в вашем браузере.
+RoleLegacyChoice = наследие
+CloseButton = Закрыть
+StackCardsButton = Сложить карты
+CharacterName = Имя персонажа
+
+# Menus
+LegacyInstalled = установлено, нажмите Enter, чтобы начать
+LegacyNotInstalled = не установлено
+ModMoveUp = Выше в порядке загрузки
+ModMoveDown = Ниже в порядке загрузки
+ModEnabled = включено
+ModDisabled = выключено
+
+# Review buffers
+BufferEvents = События
+BufferDetails = Подробности
+BufferStory = История
+BufferVerbs = Глаголы
+BufferTable = Стол
+BufferStatus = Состояние
+BufferTop = Самое новое.
+BufferEnd = Самое старое.
+AllBuffersEmpty = Все буферы просмотра пусты.
+BufferEmpty = {0}: пусто.
+BufferSummary.one = {1}, {0} запись
+BufferSummary.few = {1}, {0} записи
+BufferSummary.many = {1}, {0} записей
+BufferSummary.other = {1}, записей: {0}
+
+# Help
+HelpTitle = Справка: {0}
+HelpNavigationHint = Стрелки вверх и вниз читают справку, Escape закрывает её.
+HelpClosed = Справка закрыта.
+
+# Verbosity
+VerbosityIs = Подробность речи: {0}.
+Verbosity.Terse = краткая
+Verbosity.Normal = обычная
+Verbosity.Verbose = подробная
+
+# Key names
+Key.Delete = Delete
+Key.Backspace = Backspace
+Key.Space = Пробел
+Key.Enter = Enter
+Key.Escape = Escape
+Key.Tab = Tab
+Key.Insert = Insert
+Key.Home = Home
+Key.End = End
+Key.PageUp = Page Up
+Key.PageDown = Page Down
+Key.UpArrow = Стрелка вверх
+Key.DownArrow = Стрелка вниз
+Key.LeftArrow = Стрелка влево
+Key.RightArrow = Стрелка вправо
+
+# Screens
+Screen.Logo = Логотип. Нажмите любую клавишу, чтобы пропустить.
+Screen.Quote = Вступительная цитата.
+Screen.Menu = Главное меню.
+Screen.Tabletop = Стол.
+Screen.GameOver = Конец.
+Screen.NewGame = Выберите наследие.
+Screen.Crash = В игре произошла ошибка.
+PressAnyKey = Нажмите любую клавишу, чтобы продолжить.
+DebugDumped = Отладочная информация записана в журнал.
+
+# The table
+GroupVerbs = Глаголы
+GroupCards = Карты
+GroupControls = Управление
+GroupAnnounce = {0}, {1}
+NoVerbs = На столе нет глаголов.
+NoCards = На столе нет карт.
+VerbCount.one = {0} глагол
+VerbCount.few = {0} глагола
+VerbCount.many = {0} глаголов
+VerbCount.other = глаголов: {0}
+CardCount.one = {0} карта
+CardCount.few = {0} карты
+CardCount.many = {0} карт
+CardCount.other = карт: {0}
+BusyCount.one = {0} занят
+BusyCount.few = {0} заняты
+BusyCount.many = {0} заняты
+BusyCount.other = занято: {0}
+DoneCount.one = {0} с готовыми результатами
+DoneCount.few = {0} с готовыми результатами
+DoneCount.many = {0} с готовыми результатами
+DoneCount.other = с готовыми результатами: {0}
+TableHint = Стрелки перемещают, влево и вправо переключают между глаголами, картами и управлением, Enter действует, F1 открывает справку.
+
+# Verbs (situations)
+StateIdle = бездействует
+StateReady = готов к запуску
+StateRunning = выполняется
+StateStarting = запускается
+StateComplete = результаты ждут
+StateHalting = останавливается
+StateBusy = занят
+TimeLeft = осталось {0}
+CardsWaiting.one = ждёт {0} карта
+CardsWaiting.few = ждут {0} карты
+CardsWaiting.many = ждут {0} карт
+CardsWaiting.other = ждут карты: {0}
+WindowOpen = открыт
+SlotEmpty = пусто
+SlotWord = ячейка
+SlotNamed = ячейка {0}
+SlotCount.one = {0} ячейка
+SlotCount.few = {0} ячейки
+SlotCount.many = {0} ячеек
+SlotCount.other = ячеек: {0}
+SlotGreedy = жадная: сама забирает подходящую карту
+SlotConsumes = поглощает карту
+SlotBlocked = заблокирована
+SlotRequires = принимает
+SlotForbids = запрещает
+SlotEssential = обязательно
+BringsSlot = Добавляет ячейку: {0}
+StartButton = Вперёд
+StartUnavailable = Вперёд, недоступно: из этих карт не складывается рецепт, который можно начать
+CollectAll = Забрать всё
+OutputHeading = Результаты
+StoredHeading = Внутри
+PageOf = Страница {0} из {1}
+NoMorePages = Других страниц нет.
+VerbStarted = {0}, начало: {1}
+VerbCompleted.plain = {0}: готово
+VerbCompleted.recipe = {0}, готово: {1}
+VerbAppeared = Новый глагол: {0}
+VerbVanished = {0}: исчез
+VerbDanger = Внимание: {0} завершится через {1}
+VerbContinues = {0}, продолжение: {1}
+VerbWillBecome = {0} превратится в: {1}
+VerbSlotOpened = {0} просит карту: {1}
+OngoingSlotOpen = ячейка {0} открыта
+OngoingSlotHolds = в ячейке {0}: {1}
+WindowClosed = Окно закрыто.
+Recipe = Рецепт
+DeckDraws = тянет из колоды
+
+# Cards
+FaceDown = карта рубашкой вверх
+Unique = неповторимая
+DecaysIn = распадётся через {0}
+Quantity = по {0}
+Aspects = Аспекты
+NoAspects = Аспектов нет.
+CardsArrived = На столе: {0}
+CardGone = {0}: исчезла
+MergedInto = {0}, теперь {1}
+CardBecame = {0} превращается в {1}
+GreedyGrab = {0} забирает: {1}
+
+# Picking and placing
+PickCardFor.one = Выберите карту для: {1}. Подходит {0} карта.
+PickCardFor.few = Выберите карту для: {1}. Подходят {0} карты.
+PickCardFor.many = Выберите карту для: {1}. Подходят {0} карт.
+PickCardFor.other = Выберите карту для: {1}. Подходящих карт: {0}.
+PickVerbFor.one = Выберите глагол для: {1}. Её может принять {0} глагол.
+PickVerbFor.few = Выберите глагол для: {1}. Её могут принять {0} глагола.
+PickVerbFor.many = Выберите глагол для: {1}. Её могут принять {0} глаголов.
+PickVerbFor.other = Выберите глагол для: {1}. Подходящих глаголов: {0}.
+NoCardFits = Ни одна карта на столе не подходит к этой ячейке.
+NoVerbAccepts = Сейчас ни один глагол не может принять эту карту.
+EmptyTheSlot = Вынуть карту
+PickerCancelled = Отменено.
+Placed = {0}: положено в ячейку {1}
+Removed = {0}: возвращено на стол
+CannotPlace = Нельзя положить. {0}
+CannotMove = Эту карту сейчас нельзя переместить.
+SlotNotEmpty = Ячейка пуста.
+CollectedToTable = Забираю.
+TakenToTable = {0}: взято на стол
+CannotStart = Нельзя начать: из того, что здесь есть, не складывается рецепт, который можно начать.
+NoWindowOpen = Окно глагола не открыто.
+NothingToCollect = Пока нечего забирать.
+
+# Status and time
+Paused = Пауза
+NormalSpeed = Обычная скорость
+FastSpeed = Ускоренно
+VeryFastSpeed = Очень быстро
+NoBusyVerbs = Ни один глагол не занят.
+NothingCompleted = Ни у одного глагола нет готовых результатов.
+Busy = {0}, {1}
+DecimalSeparator = ,
+Seconds.one = {0} секунда
+Seconds.few = {0} секунды
+Seconds.many = {0} секунд
+Seconds.other = {0} секунд
+SecondsFraction = {0} секунды
+Minutes.one = {0} минута
+Minutes.few = {0} минуты
+Minutes.many = {0} минут
+Minutes.other = {0} минут
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = Вы входите в Мансус: {0}. Выберите одну карту рубашкой вверх.
+MansusChooseHint = Нажмите Enter на карте рубашкой вверх, чтобы перевернуть её, затем ещё раз Enter, чтобы забрать её с собой.
+MansusRevealed = Перевёрнута: {0}. Нажмите Enter ещё раз, чтобы забрать её.
+MansusLeft = Вы покидаете Мансус.
+MansusNoCards = Здесь пока нет карт для выбора.
+MansusChoice = Вариант {0}
+
+PortalSummary = Портал: {0}
+PortalReadText = Прочитать то, что я помню
+PortalTake = Взять на стол: {0}
+PortalCollectAll = Забрать всё и закрыть портал
+PortalWaiting = Ждёт в портале на столе: {0}
+
+AchievementUnlocked.plain = получено
+AchievementUnlocked.when = получено {0}
+AchievementLocked = не получено
+
+LifeEnding = Эта жизнь подходит к концу.
+
+# Help
+Help.Logo.Title = Логотип и вступительная цитата
+Help.Logo.1 = Нажмите любую клавишу, чтобы перейти в главное меню.
+
+Help.Menu.Title = Главное меню
+Help.Menu.1 = Стрелки вверх и вниз перемещают между кнопками и текстом. Home и End переходят к первому и последнему элементу.
+Help.Menu.2 = Enter нажимает выбранную кнопку. Стрелки влево и вправо меняют ползунки и варианты. Enter на тексте, объявленном как ссылка, открывает её в вашем браузере.
+Help.Menu.3 = Escape закрывает открытую панель, например настройки, титры или моды.
+Help.Menu.4 = [[UI_CONTINUE]] продолжает сохранённую игру. [[UI_BEGIN_GAME]] начинает новую. [[UI_PURGE_SAVE]] после подтверждения удаляет ваше сохранение.
+Help.Menu.5 = Панель дополнений и модов показывает дополнительные наследия, с которых можно начать, и установленные моды.
+Help.Menu.6 = В настройках выберите вкладку клавишей Enter, затем спуститесь к её ползункам. Поле назначения клавиши после Enter ждёт новую клавишу.
+Help.Menu.7 = {0} читает всё, что есть на экране. {1} повторяет выбранный элемент.
+
+Help.NewGame.Title = Выбор наследия
+Help.NewGame.1 = Стрелки вверх и вниз перемещают между предложенными наследиями, их описаниями и кнопками.
+Help.NewGame.2 = Enter на наследии выбирает его; его описание затем читается в строках текста под ним.
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]] начинает новую жизнь с выбранным наследием. [[LEGACY_BACK_TO_MENU]] возвращает в главное меню.
+
+Help.GameOver.Title = Конец
+Help.GameOver.1 = Текст концовки был прочитан, когда открылся экран. Стрелки вверх и вниз читают его снова, строка за строкой.
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]] позволяет выбрать новое наследие. [[LEGACY_MAIN_MENU]] возвращает в меню.
+Help.GameOver.3 = Полный текст концовки есть также в буфере просмотра История: Control и стрелка влево или вправо, чтобы до него добраться.
+
+Help.Crash.Title = Экран ошибки
+Help.Crash.1 = В игре произошла ошибка. Кнопка файлов журнала открывает папку с журналами игры. Кнопка выхода закрывает игру.
+
+Help.Options.Title = Меню настроек
+Help.Options.1 = Пока настройки открыты, игра стоит на паузе. Стрелки вверх и вниз перемещают, Enter нажимает, Escape закрывает настройки.
+Help.Options.2 = Первые элементы — это вкладки: Enter на вкладке показывает её настройки ниже. Стрелки влево и вправо меняют ползунок.
+Help.Options.3 = Enter на назначении клавиши ждёт новую клавишу.
+Help.Options.4 = [[UI_RESUME]] закрывает настройки. [[UI_SAVEEXIT]] сохраняет игру и возвращает в главное меню. [[UI_RESTART]] просит подтверждения, а затем начинает эту жизнь с начала.
+Help.Options.5 = [[UI_BROWSE]] открывает папку сохранений игры в Windows.
+
+Help.Board.Title = Стол
+Help.Board.1 = На столе три группы: Глаголы, Карты и Управление. Стрелки влево и вправо переключают группу, вверх и вниз перемещают внутри неё. Home и End переходят к первому и последнему элементу.
+Help.Board.2 = Enter на глаголе открывает его окно. Enter на карте перечисляет глаголы, которые могут её принять; выберите один клавишей Enter, чтобы положить в него карту.
+Help.Board.3 = В группе Управление находятся ваше состояние, кнопка складывания карт, кнопки скорости, настройки и имя вашего персонажа.
+Help.Board.4 = {2} читает всё о выбранном элементе: описание, аспекты и их значение, ячейки. Эти строки попадают и в буфер Подробности.
+Help.Board.5 = {1} повторяет выбранный элемент. {0} читает всю группу.
+Help.Board.6 = {3} читает вашего персонажа и строку состояния: здоровье, страсть, рассудок, средства.
+Help.Board.7 = {4} читает скорость игры, каждый занятый глагол с оставшимся временем и карты, которые распадаются.
+Help.Board.8 = {5} переходит к следующему глаголу с готовыми результатами.
+Help.Board.9 = Выполняющийся глагол иногда открывает ячейку и просит карту. Об этом объявляется, а глагол при выборе говорит «ячейка открыта». Откройте глагол или нажмите Enter на карте, чтобы заполнить ячейку, пока не вышло время.
+Help.Board.10 = Клавиши игры: Пробел ставит на паузу и снимает с неё, N обычная скорость, M ускоренно, Tab складывает карты, Escape открывает меню настроек.
+Help.Board.11 = Время идёт, пока игра не на паузе. Пауза клавишей Пробел — самый безопасный способ подумать.
+
+Help.Window.Title = Окно глагола
+Help.Window.1 = Стрелки вверх и вниз перемещают по окну: текст истории, ячейки, Вперёд, результаты и Забрать всё.
+Help.Window.2 = Enter на ячейке перечисляет карты на столе, которые к ней подходят. Выберите одну клавишей Enter. Если ячейка занята, первый вариант вынимает её карту.
+Help.Window.3 = {6} или Backspace на ячейке возвращает её карту на стол.
+Help.Window.4 = Когда карты положены, предсказание окна меняется; читается название нового рецепта со словами «готов к запуску», если Вперёд сработает.
+Help.Window.5 = Enter на кнопке Вперёд или клавиша игры S начинает рецепт. Enter на результате берёт эту карту на стол; Забрать всё или клавиша игры C забирает все.
+Help.Window.6 = Enter на тексте истории читает его целиком. Page Up и Page Down, или влево и вправо на тексте истории, листают страницы длинной истории.
+Help.Window.7 = Escape закрывает окно; карты, оставшиеся в ячейках незапущенного глагола, возвращаются на стол.
+
+Help.Mansus.Title = Мансус
+Help.Mansus.1 = Вам снится Мансус. Карты рубашкой вверх ждут в местах, до которых вы можете добраться.
+Help.Mansus.2 = Стрелки вверх и вниз перемещают между ними. Enter переворачивает карту; остальные исчезают.
+Help.Mansus.3 = Ещё один Enter забирает открытую карту с собой, и сон заканчивается.
+
+Help.Picker.Title = Выбор из списка
+Help.Picker.1 = Стрелки вверх и вниз перемещают по вариантам, Enter выбирает, Escape отменяет.
+Help.Picker.2 = {2} читает всё о выбранном варианте.
+
+Help.Global.1 = Клавиши, которые работают везде:
+Help.Global.2 = {8} открывает эту справку. {7} меняет подробность речи.
+Help.Global.3 = Control и стрелки вверх и вниз читают буферы просмотра; Control и стрелки влево и вправо переключают буфер: События, Подробности, История, Глаголы, Стол и Состояние.
+Help.Global.4 = Настройки, включая все клавиши, находятся в BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.

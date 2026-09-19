@@ -1,0 +1,289 @@
+# Cultist Simulator Accessibility - 日本語 (the game's culture id is "jp"). Keys and format are explained in en.txt.
+
+ModLoaded = Cultist Simulator アクセシビリティを読み込みました。F1 キーでいつでもヘルプを開けます。
+
+# Lists and navigation
+StartOfList = 先頭。
+EndOfList = 末尾。
+NothingToNavigate = ここには移動できる項目がありません。
+NothingFocused = フォーカスされている項目はありません。
+Unavailable = 利用不可
+Selected = 選択中
+NotSelected = 未選択
+Checked = チェックあり
+Unchecked = チェックなし
+Maximum = 最大。
+Minimum = 最小。
+PercentValue = {0} パーセント
+EditingField = 編集中。入力してから Enter を押してください。
+SliderHint = 左右の矢印キーで値を変更します。
+PressNewKey = この操作に割り当てる新しいキーを押してください。
+NoKeyBound = キーなし
+KeyBoundTo = {0} に割り当て済み。
+PositionOf = {1} 件中 {0} 件目
+
+# Roles
+RoleSlider = スライダー
+RoleKeyBinding = キー割り当て
+RoleTab = タブ
+RoleCheckbox = チェックボックス
+RoleRadio = オプション
+RoleCombo = コンボボックス
+RoleEdit = 入力欄
+RoleLink = リンク
+OpeningLink = ブラウザーでリンクを開きます。
+RoleLegacyChoice = レガシー
+CloseButton = 閉じる
+StackCardsButton = カードを統合する
+CharacterName = キャラクター名
+
+# Menus
+LegacyInstalled = インストール済み、Enter で開始
+LegacyNotInstalled = 未インストール
+ModMoveUp = 読み込み順を上げる
+ModMoveDown = 読み込み順を下げる
+ModEnabled = 有効
+ModDisabled = 無効
+
+# Review buffers
+BufferEvents = イベント
+BufferDetails = 詳細
+BufferStory = ストーリー
+BufferVerbs = 動詞
+BufferTable = テーブル
+BufferStatus = ステータス
+BufferTop = 最新。
+BufferEnd = 最古。
+AllBuffersEmpty = レビューバッファはすべて空です。
+BufferEmpty = {0} は空です。
+BufferSummary.other = {1}、{0} 件
+
+# Help
+HelpTitle = ヘルプ: {0}
+HelpNavigationHint = 上下の矢印キーでヘルプを読み、Escape で閉じます。
+HelpClosed = ヘルプを閉じました。
+
+# Verbosity
+VerbosityIs = 読み上げの詳しさ: {0}。
+Verbosity.Terse = 簡潔
+Verbosity.Normal = 標準
+Verbosity.Verbose = 詳細
+
+# Key names
+Key.Delete = Delete
+Key.Backspace = Backspace
+Key.Space = スペース
+Key.Enter = Enter
+Key.Escape = Escape
+Key.Tab = Tab
+Key.Insert = Insert
+Key.Home = Home
+Key.End = End
+Key.PageUp = Page Up
+Key.PageDown = Page Down
+Key.UpArrow = 上矢印
+Key.DownArrow = 下矢印
+Key.LeftArrow = 左矢印
+Key.RightArrow = 右矢印
+
+# Screens
+Screen.Logo = ロゴ。いずれかのキーでスキップします。
+Screen.Quote = タイトルの引用文。
+Screen.Menu = メインメニュー。
+Screen.Tabletop = テーブル。
+Screen.GameOver = 結末。
+Screen.NewGame = レガシーを選んでください。
+Screen.Crash = ゲームでエラーが発生しました。
+PressAnyKey = いずれかのキーを押すと続行します。
+DebugDumped = デバッグ情報をログに書き込みました。
+
+# The table
+GroupVerbs = 動詞
+GroupCards = カード
+GroupControls = コントロール
+GroupAnnounce = {0}、{1}
+NoVerbs = テーブルに動詞がありません。
+NoCards = テーブルにカードがありません。
+VerbCount.other = 動詞 {0} 個
+CardCount.other = カード {0} 枚
+BusyCount.other = 進行中 {0} 個
+DoneCount.other = 結果待ち {0} 個
+TableHint = 矢印キーで移動、左右で動詞・カード・コントロールを切り替え、Enter で実行、F1 でヘルプ。
+
+# Verbs (situations)
+StateIdle = 待機中
+StateReady = 開始可能
+StateRunning = 進行中
+StateStarting = 開始中
+StateComplete = 結果あり
+StateHalting = 停止中
+StateBusy = 処理中
+TimeLeft = 残り {0}
+CardsWaiting.other = カード {0} 枚が待機中
+WindowOpen = 開いています
+SlotEmpty = 空
+SlotWord = スロット
+SlotNamed = {0} スロット
+SlotCount.other = スロット {0} 個
+SlotGreedy = 貪欲: 合うカードを自動でつかみます
+SlotConsumes = カードを消費します
+SlotBlocked = ブロック中
+SlotRequires = 受け入れ
+SlotForbids = 禁止
+SlotEssential = 必須
+BringsSlot = スロットを追加: {0}
+StartButton = 開始
+StartUnavailable = 開始、利用不可: これらのカードでは開始できるレシピになりません
+CollectAll = すべて集める
+OutputHeading = 結果
+StoredHeading = 中身
+PageOf = {1} ページ中 {0} ページ目
+NoMorePages = ほかのページはありません。
+VerbStarted = {0} 開始: {1}
+VerbCompleted.plain = {0} 完了
+VerbCompleted.recipe = {0} 完了: {1}
+VerbAppeared = 新しい動詞: {0}
+VerbVanished = {0} が消えました
+VerbDanger = 警告: {0} はあと {1} で終了します
+VerbContinues = {0} 継続: {1}
+VerbWillBecome = {0} は次に変わります: {1}
+VerbSlotOpened = {0} がカードを求めています: {1}
+OngoingSlotOpen = {0} スロットが開いています
+OngoingSlotHolds = {0} スロットに {1}
+WindowClosed = ウィンドウを閉じました。
+Recipe = レシピ
+DeckDraws = 次のデッキから引きます:
+
+# Cards
+FaceDown = 裏向きのカード
+Unique = ユニーク
+DecaysIn = {0} で消滅
+Quantity = {0} 枚
+Aspects = アスペクト
+NoAspects = アスペクトなし。
+CardsArrived = テーブルに届きました: {0}
+CardGone = {0} が消えました
+MergedInto = {0}、合計 {1}
+CardBecame = {0} が {1} に変わりました
+GreedyGrab = {0} が {1} を取りました
+
+# Picking and placing
+PickCardFor.other = {1} に入れるカードを選んでください。合うカードは {0} 枚。
+PickVerbFor.other = {1} を入れる動詞を選んでください。受け取れる動詞は {0} 個。
+NoCardFits = このスロットに合うカードはテーブルにありません。
+NoVerbAccepts = いまこのカードを受け取れる動詞はありません。
+EmptyTheSlot = カードを取り出す
+PickerCancelled = キャンセルしました。
+Placed = {0} を {1} に置きました
+Removed = {0} をテーブルに戻しました
+CannotPlace = 置けません。{0}
+CannotMove = そのカードはいま動かせません。
+SlotNotEmpty = スロットは空です。
+CollectedToTable = 集めています。
+TakenToTable = {0} をテーブルに取りました
+CannotStart = 開始できません: ここにあるものでは開始できるレシピになりません。
+NoWindowOpen = 動詞のウィンドウは開いていません。
+NothingToCollect = まだ集めるものがありません。
+
+# Status and time
+Paused = 一時停止中
+NormalSpeed = 通常速度
+FastSpeed = 早送り
+VeryFastSpeed = 超高速
+NoBusyVerbs = 進行中の動詞はありません。
+NothingCompleted = 結果が待っている動詞はありません。
+Busy = {0}、{1}
+DecimalSeparator = .
+Seconds.other = {0} 秒
+SecondsFraction = {0} 秒
+Minutes.other = {0} 分
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = マンサスに入りました: {0}。裏向きのカードを 1 枚選んでください。
+MansusChooseHint = 裏向きのカードで Enter を押すと表に返し、もう一度 Enter で持ち帰ります。
+MansusRevealed = 表に返しました: {0}。もう一度 Enter で持ち帰ります。
+MansusLeft = マンサスを離れました。
+MansusNoCards = ここにはまだ選べるカードがありません。
+MansusChoice = 選択肢 {0}
+
+PortalSummary = ポータル: {0}
+PortalReadText = 覚えていることを読む
+PortalTake = {0} をテーブルに取る
+PortalCollectAll = すべて取ってポータルを閉じる
+PortalWaiting = テーブルのポータルで待機中: {0}
+
+AchievementUnlocked.plain = 解除済み
+AchievementUnlocked.when = 解除済み {0}
+AchievementLocked = 未解除
+
+LifeEnding = この人生が終わろうとしています。
+
+# Help
+Help.Logo.Title = ロゴとタイトルの引用文
+Help.Logo.1 = いずれかのキーを押すとメインメニューに進みます。
+
+Help.Menu.Title = メインメニュー
+Help.Menu.1 = 上下の矢印キーでボタンとテキストの間を移動します。Home と End で最初と最後の項目に移動します。
+Help.Menu.2 = Enter でフォーカス中のボタンを実行します。左右の矢印キーでスライダーや選択肢を変更します。リンクと読み上げられたテキストで Enter を押すとブラウザーで開きます。
+Help.Menu.3 = Escape で設定、クレジット、Mod などの開いているパネルを閉じます。
+Help.Menu.4 = [[UI_CONTINUE]] でセーブしたゲームを再開します。[[UI_BEGIN_GAME]] で新しいゲームを始めます。[[UI_PURGE_SAVE]] は確認のあとセーブデータを削除します。
+Help.Menu.5 = DLC と Mod のパネルには、開始できる追加レガシーとインストール済みの Mod が並びます。
+Help.Menu.6 = 設定では Enter でタブを選び、下に移動してそのスライダーを操作します。キー割り当ての欄は Enter のあと新しいキーを待ちます。
+Help.Menu.7 = {0} で画面全体を読み上げます。{1} でフォーカス中の項目をもう一度読みます。
+
+Help.NewGame.Title = レガシーの選択
+Help.NewGame.1 = 上下の矢印キーで、選べるレガシー、その説明、ボタンの間を移動します。
+Help.NewGame.2 = レガシーで Enter を押すと選択され、その説明が下のテキスト行で読めます。
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]] で選んだレガシーの新しい人生を始めます。[[LEGACY_BACK_TO_MENU]] でメインメニューに戻ります。
+
+Help.GameOver.Title = 結末
+Help.GameOver.1 = 結末の文章は画面が開いたときに読み上げられました。上下の矢印キーで 1 行ずつ読み直せます。
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]] で新しいレガシーを選びます。[[LEGACY_MAIN_MENU]] でメニューに戻ります。
+Help.GameOver.3 = 結末の全文はレビューバッファのストーリーにもあります。Control と左右の矢印キーで切り替えてください。
+
+Help.Crash.Title = エラー画面
+Help.Crash.1 = ゲームでエラーが発生しました。ログファイルのボタンでゲームのログがあるフォルダーを開きます。終了ボタンでゲームを終了します。
+
+Help.Options.Title = オプションメニュー
+Help.Options.1 = オプションを開いている間、ゲームは一時停止します。上下の矢印キーで移動、Enter で実行、Escape でオプションを閉じます。
+Help.Options.2 = 最初の項目はタブです。タブで Enter を押すと、その設定が下に表示されます。左右の矢印キーでスライダーを変更します。
+Help.Options.3 = キー割り当てで Enter を押すと、新しいキーを待ちます。
+Help.Options.4 = [[UI_RESUME]] でオプションを閉じます。[[UI_SAVEEXIT]] でセーブしてメインメニューに戻ります。[[UI_RESTART]] は確認のあと、この人生を最初からやり直します。
+Help.Options.5 = [[UI_BROWSE]] でゲームのセーブフォルダーを Windows で開きます。
+
+Help.Board.Title = テーブル
+Help.Board.1 = テーブルには動詞、カード、コントロールの 3 つのグループがあります。左右の矢印キーでグループを切り替え、上下でその中を移動します。Home と End で最初と最後の項目に移動します。
+Help.Board.2 = 動詞で Enter を押すとそのウィンドウが開きます。カードで Enter を押すと、それを受け取れる動詞の一覧が出ます。Enter で 1 つ選ぶとカードが入ります。
+Help.Board.3 = コントロールには、ステータス、カードを統合するボタン、速度ボタン、オプション、キャラクター名があります。
+Help.Board.4 = {2} でフォーカス中の項目のすべてを読みます: 説明、アスペクトとその意味、スロット。これらの行は詳細バッファにも入ります。
+Help.Board.5 = {1} でフォーカス中の項目をもう一度読みます。{0} でグループ全体を読みます。
+Help.Board.6 = {3} でキャラクターとステータスバーを読みます: 健康、情熱、理性、資金。
+Help.Board.7 = {4} でゲーム速度、進行中の各動詞と残り時間、消滅しつつあるカードを読みます。
+Help.Board.8 = {5} で結果が待っている次の動詞に移動します。
+Help.Board.9 = 進行中の動詞がスロットを開いてカードを求めることがあります。これは読み上げられ、その動詞にフォーカスすると「スロットが開いています」と言います。時間切れになる前に、動詞を開くか、カードで Enter を押して埋めてください。
+Help.Board.10 = ゲームのキー: スペースで一時停止と再開、N で通常速度、M で早送り、Tab でカードを統合、Escape でオプションメニュー。
+Help.Board.11 = 一時停止していない間は時間が進みます。スペースで一時停止するのが、考えるためのいちばん安全な方法です。
+
+Help.Window.Title = 動詞のウィンドウ
+Help.Window.1 = 上下の矢印キーでウィンドウ内を移動します: ストーリーの文章、スロット、開始、結果、すべて集める。
+Help.Window.2 = スロットで Enter を押すと、それに合うテーブルのカードの一覧が出ます。Enter で 1 枚選びます。スロットが埋まっている場合、最初の選択肢でカードを取り出します。
+Help.Window.3 = スロットで {6} または Backspace を押すと、そのカードをテーブルに戻します。
+Help.Window.4 = カードを置くとウィンドウの予測が変わります。新しいレシピ名が読み上げられ、開始できるときは「開始可能」と言います。
+Help.Window.5 = 開始で Enter、またはゲームのキー S でレシピを始めます。結果で Enter を押すとそのカードをテーブルに取ります。すべて集める、またはゲームのキー C ですべて取ります。
+Help.Window.6 = ストーリーの文章で Enter を押すと全文を読みます。Page Up と Page Down、またはストーリーの文章上で左右を押すと、長いストーリーのページをめくります。
+Help.Window.7 = Escape でウィンドウを閉じます。開始していない動詞のスロットに残したカードはテーブルに戻ります。
+
+Help.Mansus.Title = マンサス
+Help.Mansus.1 = あなたはマンサスで夢を見ています。行ける場所に裏向きのカードが待っています。
+Help.Mansus.2 = 上下の矢印キーでカードの間を移動します。Enter でカードを表に返すと、ほかのカードは消えます。
+Help.Mansus.3 = もう一度 Enter を押すと、表に返したカードを持ち帰り、夢が終わります。
+
+Help.Picker.Title = 一覧から選ぶ
+Help.Picker.1 = 上下の矢印キーで選択肢を移動、Enter で決定、Escape でキャンセルします。
+Help.Picker.2 = {2} でフォーカス中の選択肢のすべてを読みます。
+
+Help.Global.1 = どこでも使えるキー:
+Help.Global.2 = {8} でこのヘルプを開きます。{7} で読み上げの詳しさを変えます。
+Help.Global.3 = Control と上下の矢印キーでレビューバッファを読みます。Control と左右の矢印キーでバッファを切り替えます: イベント、詳細、ストーリー、動詞、テーブル、ステータス。
+Help.Global.4 = すべてのキーを含む設定は、BepInEx、config、accessibility.cultistsimulator.screenreader.cfg にあります。
