@@ -1,0 +1,10 @@
+# Decompiled game code: copyrighted, reference only, never committed or shipped.
+game/
+
+# Third-party downloads and build outputs.
+vendor/
+release/
+bin/
+obj/
+*.user
+.vs/

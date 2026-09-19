@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <AssemblyName>CultistAccessibility</AssemblyName>
+    <RootNamespace>CultistAccessibility</RootNamespace>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.0.0</Version>
+    <!-- The game is 32-bit; the plugin itself is AnyCPU managed code. -->
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>portable</DebugType>
+    <NoWarn>$(NoWarn);CS0649;CS0169;MSB3277</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GamePath Condition="'$(GAME_PATH)' != ''">$(GAME_PATH)</GamePath>
+    <GamePath Condition="'$(GamePath)' == ''">S:\steam\steamapps\common\Cultist Simulator</GamePath>
+    <ManagedPath>$(GamePath)\cultistsimulator_Data\Managed</ManagedPath>
+    <PrismDir Condition="'$(PrismDir)' == ''">C:\Users\Nitropc\code\libs\prism\prism-windows-x64</PrismDir>
+    <PluginDeployDir>$(GamePath)\BepInEx\plugins\CultistAccessibility</PluginDeployDir>
+  </PropertyGroup>
+
+  <!-- Referenced from the game folder; never copied to the output. -->
+  <ItemGroup>
+    <Reference Include="BepInEx"><HintPath>$(GamePath)\BepInEx\core\BepInEx.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GamePath)\BepInEx\core\0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(ManagedPath)\UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(ManagedPath)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(ManagedPath)\UnityEngine.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UIModule"><HintPath>$(ManagedPath)\UnityEngine.UIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(ManagedPath)\UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.InputModule"><HintPath>$(ManagedPath)\UnityEngine.InputModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.AudioModule"><HintPath>$(ManagedPath)\UnityEngine.AudioModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.VideoModule"><HintPath>$(ManagedPath)\UnityEngine.VideoModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.InputSystem"><HintPath>$(ManagedPath)\Unity.InputSystem.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.TextMeshPro"><HintPath>$(ManagedPath)\Unity.TextMeshPro.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="SecretHistories.Main"><HintPath>$(ManagedPath)\SecretHistories.Main.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="SecretHistories.Interfaces"><HintPath>$(ManagedPath)\SecretHistories.Interfaces.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="SecretHistories.Enums"><HintPath>$(ManagedPath)\SecretHistories.Enums.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="SecretHistories.Constants"><HintPath>$(ManagedPath)\SecretHistories.Constants.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(ManagedPath)\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UIWidgets"><HintPath>$(ManagedPath)\UIWidgets.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <!-- Build the x64 speech host alongside the plugin. -->
+  <ItemGroup>
+    <ProjectReference Include="..\SpeechHost\SpeechHost.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+      <GlobalPropertiesToRemove>PlatformTarget</GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+
+  <!-- Deploy on build so the test loop is: build, launch. -->
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="Exists('$(GamePath)\BepInEx')">
+    <PropertyGroup>
+      <SpeechHostOut>$(MSBuildProjectDirectory)\..\SpeechHost\bin\$(Configuration)</SpeechHostOut>
+    </PropertyGroup>
+    <MakeDir Directories="$(PluginDeployDir);$(PluginDeployDir)\SpeechHost;$(PluginDeployDir)\SpeechHost\LICENSES" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll;$(OutputPath)$(AssemblyName).pdb" DestinationFolder="$(PluginDeployDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(SpeechHostOut)\CultistAccessibility.SpeechHost.exe;$(SpeechHostOut)\CultistAccessibility.SpeechHost.exe.config" DestinationFolder="$(PluginDeployDir)\SpeechHost" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(PrismDir)\dynamic\release\bin\prism.dll;$(PrismDir)\NOTICE" DestinationFolder="$(PluginDeployDir)\SpeechHost" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <PrismLicenses Include="$(PrismDir)\LICENSES\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PrismLicenses)" DestinationFiles="@(PrismLicenses->'$(PluginDeployDir)\SpeechHost\LICENSES\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

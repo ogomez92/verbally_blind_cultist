@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    64-bit speech host. Cultist Simulator is a 32-bit (x86) Unity game, and Prism only ships
+    x64/arm64 Windows binaries, so the plugin cannot load prism.dll in-process. The plugin starts
+    this small x64 process and streams text to it over stdin; this process owns the Prism context.
+    .NET Framework 4.8 is part of every Windows 10/11 install, so players need no extra runtime.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>10.0</LangVersion>
+    <AssemblyName>CultistAccessibility.SpeechHost</AssemblyName>
+    <RootNamespace>CultistAccessibility.SpeechHost</RootNamespace>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>
