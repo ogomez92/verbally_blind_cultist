@@ -56,8 +56,6 @@ BufferStory = Story
 BufferVerbs = Verbs
 BufferTable = Table
 BufferStatus = Status
-BufferTop = Newest.
-BufferEnd = Oldest.
 AllBuffersEmpty = All review buffers are empty.
 BufferEmpty = {0} is empty.
 # {0} count, {1} buffer name
@@ -294,6 +292,7 @@ Help.Board.8 = {5} jumps to the next verb with results waiting.
 Help.Board.9 = A running verb sometimes opens a slot and wants a card. This is announced, and the verb then says 'slot open' when focused. Open the verb, or press Enter on a card, to fill it before the time runs out.
 Help.Board.10 = Game keys: Space pauses and unpauses, N normal speed, M fast forward, Tab stacks cards, Escape opens the options menu.
 Help.Board.11 = Time runs while the game is not paused. Pausing with Space is the safest way to think.
+Help.Board.12 = A short beep when a card is focused means Enter can use it: a verb would take it, or it is face down and turns over.
 
 Help.Window.Title = A verb window
 Help.Window.1 = Up and down arrows move through the window: the story text, the slots, Start, results and Collect all.
@@ -303,6 +302,7 @@ Help.Window.4 = When cards are placed the window's prediction changes; the new r
 Help.Window.5 = Enter on Start, or the game key S, begins the recipe. Enter on a result takes that card to the table; Collect all, or the game key C, takes them all.
 Help.Window.6 = Enter on the story text reads it in full. Page up and page down, or left and right on the story text, turn the pages of a long story.
 Help.Window.7 = Escape closes the window; cards left in slots of an unstarted verb return to the table.
+Help.Window.8 = A short beep on a slot means a card on the table fits it, or it holds a card you can take out; on Start, that the recipe will start.
 
 Help.Mansus.Title = The Mansus
 Help.Mansus.1 = You are dreaming in the Mansus. Face-down cards wait at the places you can reach.
@@ -316,4 +316,5 @@ Help.Picker.2 = {2} reads everything about the focused choice.
 Help.Global.1 = Keys that work everywhere:
 Help.Global.2 = {8} opens this help. {7} changes how much is said.
 Help.Global.3 = Control plus up and down arrows read the review buffers; control plus left and right switch buffer: Events, Details, Story, Verbs, Table and Status.
-Help.Global.4 = Settings, including every key, are in BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.
+Help.Global.4 = Moving focus makes Details the current buffer: control plus up arrow then reads the focused item line by line.
+Help.Global.5 = Settings, including every key, are in BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.
