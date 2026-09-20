@@ -171,3 +171,6 @@ licences + README + translations) and writes the zip to `dist\` (ignored). **`re
 references the game's own DLLs, which are not redistributable, so `.github/workflows/release.yml` cannot build it —
 on a `v*.*.*` tag it checks the tag against the csproj `<Version>`, adds `readme.html` (pandoc, from README.md),
 zips `release\` and creates the GitHub release. So: `package.ps1`, commit `release\`, then tag.
+The release also carries `installer/CultistSimulatorAccessibilityInstaller.exe`, committed here and built from the
+shared installer codebase in `..\installer` (a `Game` entry in `src/games.rs` + `src/bin/cultist.rs`, `build_installer.bat`);
+it downloads the latest release at run time, so it rarely needs rebuilding. See `installer/README.md`.

@@ -16,6 +16,8 @@ New-Item -ItemType Directory -Force $stage | Out-Null
 $bepinex = Get-ChildItem "$root\vendor" -Filter "BepInEx_win_x86_*.zip" | Sort-Object Name | Select-Object -Last 1
 if (-not $bepinex) { throw "Put BepInEx_win_x86_5.4.x.zip into vendor\ (https://github.com/BepInEx/BepInEx/releases)" }
 Expand-Archive -Path $bepinex.FullName -DestinationPath $stage
+# BepInEx's own changelog is not ours to leave in the player's game folder.
+Remove-Item (Join-Path $stage 'changelog.txt') -Force -ErrorAction SilentlyContinue
 
 # 2. The plugin and the speech host, exactly as deployed by build.ps1.
 $gamePath = if ($env:GAME_PATH) { $env:GAME_PATH } else { "S:\steam\steamapps\common\Cultist Simulator" }

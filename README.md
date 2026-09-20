@@ -7,6 +7,13 @@ Windows speech.
 
 ## Installing
 
+The easiest way is the installer: download `CultistSimulatorAccessibilityInstaller.exe` from the
+[latest release](https://github.com/ogomez92/verbally_blind_cultist/releases/latest) and run it. It finds the game
+(through Steam, or Browse for a GOG or manual install), downloads the mod, installs it, and can update or remove it
+later. It is keyboard and screen reader accessible; run it with `--cli` for a text flow.
+
+To install by hand instead:
+
 1. Unzip the whole release zip into the game folder, for example
    `C:\Program Files (x86)\Steam\steamapps\common\Cultist Simulator`, so that `winhttp.dll` ends up next to
    `cultistsimulator.exe`. The zip contains BepInEx 5 for **32-bit** games (Cultist Simulator is a 32-bit game; the
@@ -19,7 +26,7 @@ Windows speech.
 Requirements: Windows 10 or 11 (64-bit), .NET Framework 4.8 (built into Windows 10 1903 and later and Windows 11).
 If your screen reader starts after the game, the mod switches to it automatically within a few seconds.
 
-To uninstall, delete `BepInEx\plugins\CultistAccessibility` (and `winhttp.dll` to remove BepInEx).
+To uninstall, use the installer, or delete `BepInEx\plugins\CultistAccessibility` (and `winhttp.dll` to remove BepInEx).
 
 ## Keys
 

@@ -27,8 +27,10 @@ jobs:
             exit 1
           fi
 
-      - name: Check that the payload is there
-        run: test -f release/BepInEx/plugins/CultistAccessibility/CultistAccessibility.dll
+      - name: Check that the payload and the installer are there
+        run: |
+          test -f release/BepInEx/plugins/CultistAccessibility/CultistAccessibility.dll
+          test -f installer/CultistSimulatorAccessibilityInstaller.exe
 
       - name: Install pandoc
         run: sudo apt-get update && sudo apt-get install -y pandoc
@@ -42,5 +44,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: CultistAccessibility-${{ github.ref_name }}.zip
+          files: |
+            CultistAccessibility-${{ github.ref_name }}.zip
+            installer/CultistSimulatorAccessibilityInstaller.exe
           generate_release_notes: true
