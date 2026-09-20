@@ -6,6 +6,7 @@ namespace CultistAccessibility.Core.Buffers
     /// <summary>
     /// Review buffers. Ctrl+Up/Down move inside the current buffer, Ctrl+Left/Right switch buffers
     /// (skipping empty ones) and announce "Name, N items". Refresher-driven buffers rebuild when switched to.
+    /// Every focus change makes Details the current buffer.
     /// </summary>
     internal static class BufferManager
     {
@@ -50,7 +51,17 @@ namespace CultistAccessibility.Core.Buffers
                 Story.Add(chunks[i]);
         }
 
-        public static void SetDetails(IList<string> lines) => Details?.SetItems(lines);
+        /// <summary>
+        /// Focus moved: the details of the focused item become the current buffer, so Ctrl+Up reads them from
+        /// their first line whatever buffer was being read before.
+        /// </summary>
+        public static void SetDetails(IList<string> lines)
+        {
+            if (Details == null) return;
+            Details.SetItems(lines);
+            Details.ResetCursor();
+            _current = All.IndexOf(Details);
+        }
 
         /// <summary>Called on screen changes so details from one screen are not read on another.</summary>
         public static void ClearFocusFed()

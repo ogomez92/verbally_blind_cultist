@@ -51,7 +51,9 @@ Core/
   ScreenTracker              current screen from loaded scene names (S1Logo..S7UhO), never from patches
   ScreenAnnouncer            one-off screen texts (quote, ending)
   Speech + Output/SpeechHostClient   speech, event log file (CultistAccessibility_events.log next to the dll)
-  Buffers/                   AnnouncementBuffer, BufferManager (Events, Details, Story, Verbs, Table, Status)
+  Buffers/                   AnnouncementBuffer, BufferManager (Events, Details, Story, Verbs, Table, Status);
+                             every focus change (SetDetails) makes Details the current buffer, cursor at the top
+  Sounds                     tones generated in code, own AudioSource outside the game's mixer (actionable cue)
   KeyInput, InputGate        keyboard polling (unscaled time), which game key handlers may run
   ModConfig, TextCleaner
   Strings + Loc              every spoken mod string; texts in Lang/<culture id>.txt (embedded, overridable from a lang
@@ -92,6 +94,8 @@ SpeechHost/                  x64 Prism host process
   ScrollRect viewport), so modal blockers and hidden overlays are handled without a list of overlay names.
   Order is hierarchy order (designer order). "Windows" are `CanvasGroupFader` panels (or top-level panels); a change
   of the set of windows holding the reachable controls = a new context, announced with its title after it fades in.
+- **Actionable cue.** `NavEntry.Actionable` is set only where Enter may or may not work (table cards, window slots,
+  Start); `FocusSideEffects` plays `Sounds.Actionable` when it is true. Lists where every entry acts alike leave it null.
 - **Events are polled** (TabletopEvents) rather than patched wherever state can be read, so no code path is missed.
 - **Slots of a running recipe** (the mini slot on the verb token, `VerbManifestation.DisplayRecipeThreshold`) are
   announced when they appear empty ("X wants a card: ..."), named in the verb's summary and in the T readout. A card
@@ -147,6 +151,12 @@ SpeechHost/                  x64 Prism host process
   `python check-lang.py` verifies keys, placeholders and unused entries. The Chinese culture id is `zh-hans`, the
   Japanese one `jp`. At plugin start the game's Config service does not exist yet, so `Loc` reads `Culture=` from the
   game's `config.ini`. The descriptions in the .cfg stay English (bound before any culture is known).
+- Situation notes and slot specs are saved as text (illuminations `tlg.notes.*`, `GoverningSphereSpec.Label`) in the
+  language of the time: a save continued in another language shows old text, in the game's window too.
+  `Describer.VisibleNote` rebuilds the latest note with the game's `RecipeNote` factories for the current state when
+  the saved one matches neither the title nor the text; `TextSpec` takes slot texts from the verb/recipe spec with
+  the same id. Entities are looked up again by id (`CurrentEntity`): the game reloads the Compendium on a language
+  change. The character's `Profession` is also saved text and is not relocalised.
 - Build with `build.ps1` (closes the game, `--no-incremental`, verifies the deployed timestamp); a running game locks
   the deployed files.
 

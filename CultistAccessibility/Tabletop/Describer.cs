@@ -4,10 +4,12 @@ using System.Linq;
 using Assets.Scripts.Application.Spheres;
 using CultistAccessibility.Core;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Logic;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 
@@ -165,11 +167,36 @@ namespace CultistAccessibility.Tabletop
 
         public static string SlotLabel(Sphere slot)
         {
-            var spec = slot?.GoverningSphereSpec;
+            var spec = TextSpec(slot);
             if (spec == null) return Strings.SlotWord;
             string label = TextCleaner.Clean(spec.Label);
             if (string.IsNullOrEmpty(label)) label = TextCleaner.Clean(spec.Id);
             return label;
+        }
+
+        /// <summary>
+        /// The slot's spec for its label and description. A slot's spec is saved with the game, texts included, in
+        /// the language of the time; the verb's or recipe's slot with the same id gives the current language.
+        /// </summary>
+        private static SphereSpec TextSpec(Sphere slot)
+        {
+            var spec = slot?.GoverningSphereSpec;
+            if (spec == null || string.IsNullOrEmpty(spec.Id)) return spec;
+            try
+            {
+                if (!(slot.GetContainer() is Situation s)) return spec;
+                // Verb slots exist only before the start, recipe slots only while it runs: look there first.
+                var candidates = new List<SphereSpec>();
+                var verb = CurrentEntity(s.Verb);
+                foreach (var r in new[] { CurrentEntity(s.CurrentRecipe), CurrentEntity(s.FallbackRecipe) })
+                    if (r?.Slots != null) candidates.AddRange(r.Slots);
+                if (verb?.Thresholds != null) candidates.InsertRange(s.StateIdentifier == StateEnum.Unstarted ? 0 : candidates.Count, verb.Thresholds);
+                return candidates.FirstOrDefault(c => c != null && c.Id == spec.Id) ?? spec;
+            }
+            catch
+            {
+                return spec;
+            }
         }
 
         public static string SlotSummary(Sphere slot)
@@ -220,7 +247,7 @@ namespace CultistAccessibility.Tabletop
             var spec = slot.GoverningSphereSpec;
             if (spec != null)
             {
-                lines.AddRange(TextCleaner.SplitIntoSpeechItems(spec.Description));
+                lines.AddRange(TextCleaner.SplitIntoSpeechItems(TextSpec(slot).Description));
                 string req = AspectList(spec.Required);
                 if (!string.IsNullOrEmpty(req)) lines.Add(Strings.SlotRequires + ": " + req);
                 string ess = AspectList(spec.Essential);
@@ -298,8 +325,8 @@ namespace CultistAccessibility.Tabletop
         {
             try
             {
-                string label = s.MetafictionalLabel;
-                if (string.IsNullOrWhiteSpace(label) || label == ".") label = s.CurrentRecipe?.Label;
+                VisibleNote(s, out string label, out _);
+                if (string.IsNullOrWhiteSpace(label) || label == ".") label = CurrentEntity(s.CurrentRecipe)?.Label;
                 return TextCleaner.Clean(label);
             }
             catch
@@ -310,8 +337,100 @@ namespace CultistAccessibility.Tabletop
 
         public static string RecipeText(Situation s)
         {
-            try { return TextCleaner.CleanMultiline(s.MetafictionalDescription); }
+            try
+            {
+                VisibleNote(s, out _, out string text);
+                return TextCleaner.CleanMultiline(text);
+            }
             catch { return ""; }
+        }
+
+        /// <summary>
+        /// The note the verb window shows. Notes are saved as text in the language the game had when they were
+        /// written, so a game continued in another language shows old text (in the game's own window too). The
+        /// latest note is written again the way the game writes it for the current state (RecipeNote), in the
+        /// current language, when the saved one matches neither its title nor its text. Older pages stay as saved.
+        /// </summary>
+        public static void VisibleNote(Situation s, out string title, out string text)
+        {
+            title = s.MetafictionalLabel;
+            text = s.MetafictionalDescription;
+            Relocalise(s, GameAccess.GetNotes(s)?.GetVisibleToken(), ref title, ref text);
+        }
+
+        /// <summary>One page of the verb's notes, title and text, the latest one in the current language.</summary>
+        public static string NotePageText(Situation s, Token page)
+        {
+            string title = page.Payload.MetafictionalLabel;
+            string text = page.Payload.MetafictionalDescription;
+            Relocalise(s, page, ref title, ref text);
+            return TextCleaner.Sentences(new[] { title, text });
+        }
+
+        private static void Relocalise(Situation s, Token note, ref string title, ref string text)
+        {
+            try
+            {
+                var notes = GameAccess.GetNotes(s);
+                if (notes == null || note == null || !ReferenceEquals(note, notes.GetLastToken())) return;
+                if (!CurrentStateNote(s, out string freshTitle, out string freshText)) return;
+                if (SameText(freshTitle, title) || SameText(freshText, text)) return;
+                title = freshTitle;
+                text = freshText;
+            }
+            catch (Exception ex)
+            {
+                Plugin.LogDebug("Note relocalisation failed: " + ex.Message);
+            }
+        }
+
+        /// <summary>The latest note as the game writes it now (UnstartedState, OngoingState, RecipeCompletionNotesCommand).</summary>
+        private static bool CurrentStateNote(Situation s, out string title, out string text)
+        {
+            title = text = null;
+            var recipe = CurrentEntity(s.CurrentRecipe);
+            RecipeNote note;
+            switch (s.StateIdentifier)
+            {
+                case StateEnum.Unstarted:
+                    if (s.CurrentRecipe == s.FallbackRecipe || recipe == null || !recipe.IsValid())
+                    {
+                        var verb = CurrentEntity(s.Verb);
+                        if (verb == null) return false;
+                        title = verb.Label;
+                        text = verb.Description;
+                        return true;
+                    }
+                    note = RecipeNote.StartDescription(recipe, s, additive: false);
+                    break;
+                case StateEnum.Starting:
+                case StateEnum.Ongoing:
+                    if (recipe == null || !recipe.IsValid()) return false;
+                    note = RecipeNote.StartDescription(recipe, s);
+                    break;
+                case StateEnum.Complete:
+                    if (recipe == null || !recipe.IsValid()) return false;
+                    note = RecipeNote.EndDescription(recipe, s);
+                    break;
+                default:
+                    return false;
+            }
+            title = note.Title;
+            text = note.Description;
+            return true;
+        }
+
+        private static bool SameText(string a, string b) => string.Equals((a ?? "").Trim(), (b ?? "").Trim(), StringComparison.Ordinal);
+
+        /// <summary>
+        /// The entity with the same id in the compendium loaded now (the game reloads it when the language changes),
+        /// or the given one when there is none.
+        /// </summary>
+        private static T CurrentEntity<T>(T entity) where T : class, IEntityWithId
+        {
+            if (entity == null || string.IsNullOrEmpty(entity.Id)) return entity;
+            try { return GameAccess.Compendium?.GetEntityById<T>(entity.Id) ?? entity; }
+            catch { return entity; }
         }
 
         public static string VerbSummary(Situation s, bool includeRecipe = true)

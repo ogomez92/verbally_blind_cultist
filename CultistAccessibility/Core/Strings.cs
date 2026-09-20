@@ -65,8 +65,6 @@ namespace CultistAccessibility.Core
         public static string BufferVerbs => T();
         public static string BufferTable => T();
         public static string BufferStatus => T();
-        public static string BufferTop => T();
-        public static string BufferEnd => T();
         public static string AllBuffersEmpty => T();
         public static string BufferEmpty(string name) => F(nameof(BufferEmpty), name);
         public static string BufferSummary(string name, int count) => Loc.Plural(nameof(BufferSummary), count, name);

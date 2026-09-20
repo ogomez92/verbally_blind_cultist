@@ -136,7 +136,7 @@ namespace CultistAccessibility.Tabletop
             {
                 _suspended = false;
                 // Back from the options menu: re-announce where we are.
-                if (_announcedTable) Speech.Say(CurrentSummary());
+                if (_announcedTable) SayCurrent();
             }
             if (!_announcedTable) return;
             SyncMode();
@@ -211,6 +211,7 @@ namespace CultistAccessibility.Tabletop
             string first = CurrentSummary();
             if (!string.IsNullOrEmpty(first) && _mode == Mode.Board) parts.Add(first);
             Speech.Say(TextCleaner.Sentences(parts));
+            if (_mode == Mode.Board) FocusSideEffects(CurrentEntry());
         }
 
         // ------------------------------------------------------------------ mode tracking
@@ -249,7 +250,7 @@ namespace CultistAccessibility.Tabletop
                     {
                         _group = GroupVerbs;
                         _groupFocus[GroupVerbs] = oldWindow;
-                        Speech.Say(Strings.WindowClosed + " " + CurrentSummary());
+                        SayCurrent(Strings.WindowClosed);
                     }
                     else if (old == Mode.Mansus)
                     {
@@ -265,30 +266,35 @@ namespace CultistAccessibility.Tabletop
             }
         }
 
-        private string CurrentSummary()
+        private NavEntry CurrentEntry()
         {
             switch (_mode)
             {
-                case Mode.Board:
-                {
-                    var list = BuildGroup(_group);
-                    var e = FindFocused(list, _groupFocus[_group]);
-                    return e != null ? e.Summary() : EmptyGroupText(_group);
-                }
-                case Mode.Window:
-                {
-                    var list = BuildWindow(_windowSituation);
-                    var e = FindFocused(list, _windowFocus);
-                    return e != null ? e.Summary() : "";
-                }
-                case Mode.Mansus:
-                {
-                    var list = BuildMansus();
-                    var e = FindFocused(list, _mansusFocus);
-                    return e != null ? e.Summary() : Strings.MansusNoCards;
-                }
+                case Mode.Board: return FindFocused(BuildGroup(_group), _groupFocus[_group]);
+                case Mode.Window: return FindFocused(BuildWindow(_windowSituation), _windowFocus);
+                case Mode.Mansus: return FindFocused(BuildMansus(), _mansusFocus);
+            }
+            return null;
+        }
+
+        private string CurrentSummary()
+        {
+            var e = CurrentEntry();
+            if (e != null) return e.Summary();
+            switch (_mode)
+            {
+                case Mode.Board: return EmptyGroupText(_group);
+                case Mode.Mansus: return Strings.MansusNoCards;
             }
             return "";
+        }
+
+        /// <summary>Speaks the focused item after focus came back to it (window closed, options closed).</summary>
+        private void SayCurrent(string prefix = null)
+        {
+            string summary = CurrentSummary();
+            Speech.Say(string.IsNullOrEmpty(prefix) ? summary : prefix + " " + summary);
+            FocusSideEffects(CurrentEntry());
         }
 
         // ------------------------------------------------------------------ list helpers
@@ -316,12 +322,15 @@ namespace CultistAccessibility.Tabletop
             if (next < 0)
             {
                 Speech.SayFocus(Strings.StartOfList + " " + list[0].Summary());
+                FocusSideEffects(list[0]);
                 return list[0].Key;
             }
             if (next >= list.Count)
             {
-                Speech.SayFocus(Strings.EndOfList + " " + list[list.Count - 1].Summary());
-                return list[list.Count - 1].Key;
+                var last = list[list.Count - 1];
+                Speech.SayFocus(Strings.EndOfList + " " + last.Summary());
+                FocusSideEffects(last);
+                return last.Key;
             }
             var e = list[next];
             string text = e.Summary();
@@ -334,10 +343,9 @@ namespace CultistAccessibility.Tabletop
         private static void FocusSideEffects(NavEntry e)
         {
             if (e == null) return;
-            try
-            {
-                if (e.Details != null) BufferManager.SetDetails(e.Details());
-            }
+            try { if (e.Details != null) BufferManager.SetDetails(e.Details()); }
+            catch { }
+            try { if (e.Actionable != null && e.Actionable()) Sounds.Actionable(); }
             catch { }
             if (e.Token != null) GameAccess.PointCameraAt(e.Token);
         }
@@ -548,10 +556,19 @@ namespace CultistAccessibility.Tabletop
                     Token = card,
                     Summary = () => Describer.CardSummary(card),
                     Details = () => Describer.CardDetails(card),
-                    Activate = () => OpenVerbPicker(card)
+                    Activate = () => OpenVerbPicker(card),
+                    Actionable = () => CardActionable(card)
                 });
             }
             return list;
+        }
+
+        /// <summary>Enter on a table card does something: a face-down card turns over, or a verb would take it.</summary>
+        private static bool CardActionable(Token card)
+        {
+            if (card == null || card.Defunct) return false;
+            if (card.Payload.IsShrouded) return true;
+            return card.CanBeDragged() && GameActions.VerbsAccepting(card).Count > 0;
         }
 
         private List<NavEntry> BuildControls()
@@ -832,6 +849,8 @@ namespace CultistAccessibility.Tabletop
                     Summary = () => Describer.SlotSummary(sp),
                     Details = () => Describer.SlotDetails(sp),
                     Activate = () => OpenCardPicker(s, sp),
+                    // Enter lists the cards that fit, with "empty the slot" first when it holds one.
+                    Actionable = () => sp.GetElementTokens().Any() || GameAccess.TableCards().Any(t => GameActions.CanPlace(t, sp)),
                     Delete = () =>
                     {
                         if (!sp.GetElementTokens().Any()) Speech.Say(Strings.SlotNotEmpty);
@@ -848,7 +867,8 @@ namespace CultistAccessibility.Tabletop
                         Key = "start",
                         Summary = () => Describer.CanStart(s) ? Strings.StartButton + ", " + Describer.RecipeLabel(s) : Strings.StartUnavailable,
                         Details = () => Describer.VerbDetails(s),
-                        Activate = () => GameActions.TryStart(s)
+                        Activate = () => GameActions.TryStart(s),
+                        Actionable = () => Describer.CanStart(s)
                     });
                     break;
                 case StateEnum.Ongoing:
@@ -985,7 +1005,7 @@ namespace CultistAccessibility.Tabletop
                 page = notes.Tokens.ElementAtOrDefault(target);
             }
             catch { }
-            string text = page != null ? TextCleaner.Sentences(new[] { page.Payload.MetafictionalLabel, page.Payload.MetafictionalDescription }) : ReadStoryText(s);
+            string text = page != null ? Describer.NotePageText(s, page) : ReadStoryText(s);
             Speech.Say(Strings.PageOf(target + 1, notes.NoteCount) + ". " + text);
         }
 

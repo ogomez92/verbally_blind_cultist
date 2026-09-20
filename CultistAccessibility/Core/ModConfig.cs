@@ -40,6 +40,10 @@ namespace CultistAccessibility.Core
         public static ConfigEntry<bool> AnnounceTimerWarnings;
         public static ConfigEntry<int> TimerWarningSeconds;
 
+        // Sounds
+        public static ConfigEntry<bool> ActionableSound;
+        public static ConfigEntry<int> SoundVolume;
+
         // Keys
         public static ConfigEntry<Key> KeyHelp;
         public static ConfigEntry<Key> KeyCycleVerbosity;
@@ -94,6 +98,12 @@ namespace CultistAccessibility.Core
                 "Warn when a dangerous verb is about to finish.");
             TimerWarningSeconds = cfg.Bind("Announcements", "TimerWarningSeconds", 10,
                 "How many seconds before a dangerous verb finishes the warning is given.");
+
+            ActionableSound = cfg.Bind("Sounds", "ActionableSound", true,
+                "Play a short beep when focus lands on something Enter can act on, in lists where only some items can: a card that a verb would take, a slot with a card that fits, a Start button that will work.");
+            SoundVolume = cfg.Bind("Sounds", "SoundVolume", 40,
+                new ConfigDescription("Volume of the mod's beeps, from 0 to 100. Independent of the game's own volume settings.",
+                    new AcceptableValueRange<int>(0, 100)));
 
             KeyHelp = cfg.Bind("Keys", "Help", Key.F1, "Open context help for the current screen.");
             KeyCycleVerbosity = cfg.Bind("Keys", "CycleVerbosity", Key.F2, "Cycle the verbosity level.");

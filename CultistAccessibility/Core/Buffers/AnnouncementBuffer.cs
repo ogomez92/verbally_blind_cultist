@@ -82,29 +82,24 @@ namespace CultistAccessibility.Core.Buffers
             if (FollowLatest) _cursor = -1;
         }
 
-        /// <summary>Ctrl+Up: older events / further detail lines.</summary>
+        /// <summary>The next Ctrl+Up reads the top item.</summary>
+        public void ResetCursor() => _cursor = -1;
+
+        /// <summary>Ctrl+Up: older events / further detail lines. At the end the last item is read again.</summary>
         public string MoveDeeper()
         {
             if (_items.Count == 0) return null;
-            if (_cursor < _items.Count - 1)
-            {
-                _cursor++;
-                return _items[_cursor];
-            }
-            return Strings.BufferEnd + " " + _items[_cursor];
+            if (_cursor < _items.Count - 1) _cursor++;
+            return _items[_cursor];
         }
 
-        /// <summary>Ctrl+Down: back toward the top item.</summary>
+        /// <summary>Ctrl+Down: back toward the top item, which is read again once reached.</summary>
         public string MoveTowardTop()
         {
             if (_items.Count == 0) return null;
-            if (_cursor > 0)
-            {
-                _cursor--;
-                return _items[_cursor];
-            }
-            _cursor = 0;
-            return Strings.BufferTop + " " + _items[0];
+            if (_cursor > 0) _cursor--;
+            else _cursor = 0;
+            return _items[_cursor];
         }
 
         public string Current => _cursor >= 0 && _cursor < _items.Count ? _items[_cursor] : (_items.Count > 0 ? _items[0] : null);

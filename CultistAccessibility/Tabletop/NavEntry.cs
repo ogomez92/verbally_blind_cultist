@@ -16,6 +16,11 @@ namespace CultistAccessibility.Tabletop
         public Action<int> Adjust;
         /// <summary>Delete key on this entry (empty a slot).</summary>
         public Action Delete;
+        /// <summary>
+        /// Whether Enter can act on this entry now; true plays the actionable sound on focus. Null in lists where
+        /// every entry acts alike (verbs, results, choices), so the sound only marks the entries that stand out.
+        /// </summary>
+        public Func<bool> Actionable;
         /// <summary>Token to point the camera at.</summary>
         public Token Token;
     }

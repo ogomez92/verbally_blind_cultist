@@ -40,6 +40,9 @@ Everywhere:
 | Control + Up / Down | Read the review buffers (older / newer) |
 | Control + Left / Right | Switch review buffer: Events, Details, Story, Verbs, Table, Status |
 
+Every time focus moves, the Details buffer becomes the current one, holding everything about the focused item:
+Control + Up then reads it line by line, from the top.
+
 On the table:
 
 | Key | Action |
@@ -47,6 +50,10 @@ On the table:
 | Left / Right | Switch group: Verbs (and Mansus portals), Cards, Controls |
 | Enter on a verb | Open its window |
 | Enter on a card | List the verbs that can take it; Enter puts the card in |
+
+A short beep when focus lands on a card means Enter can use it: a verb would take it now, or it is face down and
+turns over. In a verb window the beep marks a slot that a card on the table fits (or that holds a card you can take
+out), and Start when the recipe will start. Items without the beep would only be refused.
 | H | Your character and the status bar: health, passion, reason, funds and the game speed |
 | T | Game speed, every busy verb with its time left (soonest first), finished verbs, decaying cards |
 | G | Jump to the next verb with results waiting |
@@ -87,6 +94,10 @@ The mod speaks the language the game is set to (Options, Language): English, Spa
 Japanese and Simplified Chinese. Changing the game's language changes the mod's speech at once. Your screen reader or
 Windows voice must have a voice for that language.
 
+The game saves the story text of each verb as it was written, so a game started in one language and continued in
+another still shows the old language in the verb windows. The mod reads the latest text of each verb in the current
+language instead (older pages of a long story stay as they were saved), and the slot names too.
+
 To correct a translation or add one, put a text file named after the game's language id (`en`, `es`, `de`, `fr`,
 `ru`, `jp`, `zh-hans`) in a `lang` folder next to the mod, for example
 `BepInEx\plugins\CultistAccessibility\lang\es.txt`, with lines such as `Paused = En pausa`. Only the lines you want to
@@ -102,6 +113,8 @@ Edit `BepInEx\config\accessibility.cultistsimulator.screenreader.cfg` with a tex
   `SpeakHints`, `MoveCameraToFocus`, `DebugLogging` (writes every spoken line to `BepInEx\LogOutput.log`).
 - Announcements: turn each kind of announcement on or off; `ReadCompletionText` reads the whole story when a verb
   finishes; `TimerWarningSeconds` sets how early the danger warning comes.
+- Sounds: `ActionableSound` turns the actionable beep on or off; `SoundVolume` (0 to 100) sets its volume, separate
+  from the game's own volume settings.
 - Keys: every mod key can be changed (names from Unity's key list, for example `F1`, `R`, `Delete`).
 
 Leave `DeveloperTestKeys` set to false: it enables test shortcuts that change your game.

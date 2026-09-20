@@ -64,6 +64,7 @@ namespace CultistAccessibility
             _host.hideFlags = HideFlags.HideAndDontSave;
             DontDestroyOnLoad(_host);
             _host.AddComponent<AccessibilityController>();
+            Sounds.Initialize(_host);
         }
 
         private void OnApplicationQuit()
