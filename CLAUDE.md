@@ -164,3 +164,10 @@ SpeechHost/                  x64 Prism host process
 `build.ps1` → launch → `BepInEx\LogOutput.log` (set `DebugLogging = true` to log every spoken line as `Spoke:`).
 Ctrl+Shift+D dumps the navigable items. Back up `%USERPROFILE%\AppData\LocalLow\Weather Factory\Cultist Simulator`
 (save.json, restart.json) before driving the game with synthetic keys; a counted key sequence once hit Purge Save.
+
+## Releasing
+`package.ps1 -Version x.y.z` rebuilds and restages `release\` (BepInEx x86 + plugin + SpeechHost with Prism and its
+licences + README + translations) and writes the zip to `dist\` (ignored). **`release\` is committed**: the plugin
+references the game's own DLLs, which are not redistributable, so `.github/workflows/release.yml` cannot build it —
+on a `v*.*.*` tag it checks the tag against the csproj `<Version>`, adds `readme.html` (pandoc, from README.md),
+zips `release\` and creates the GitHub release. So: `package.ps1`, commit `release\`, then tag.

@@ -3,8 +3,13 @@ game/
 
 # Third-party downloads and build outputs.
 vendor/
-release/
+dist/
 bin/
 obj/
 *.user
 .vs/
+
+# release/ is the packaged payload and IS committed: the plugin references the game's
+# own DLLs, so CI cannot build it. package.ps1 restages it, the release workflow zips it.
+!release/
+release/readme.html

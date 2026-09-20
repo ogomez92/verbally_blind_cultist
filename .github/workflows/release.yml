@@ -1,0 +1,46 @@
+# Tag a release with the version already committed in release\ :
+#   .\package.ps1 -Version 1.1.0   (rebuilds and restages release\)
+#   git commit -am "Release 1.1.0" && git tag v1.1.0 && git push --follow-tags
+# CI cannot build the plugin: it references the game's own DLLs, which are not redistributable.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the tag against the version in the csproj
+        run: |
+          csproj=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' CultistAccessibility/CultistAccessibility.csproj | head -1)
+          tag=${GITHUB_REF_NAME#v}
+          if [ "$csproj" != "$tag" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match <Version>$csproj</Version>; run package.ps1 and commit first." >&2
+            exit 1
+          fi
+
+      - name: Check that the payload is there
+        run: test -f release/BepInEx/plugins/CultistAccessibility/CultistAccessibility.dll
+
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Regenerate release/readme.html from README.md
+        run: pandoc -f gfm -t html -s --metadata title="Cultist Simulator Accessibility Mod" README.md -o release/readme.html
+
+      - name: Create zip
+        run: cd release && zip -r ../CultistAccessibility-${{ github.ref_name }}.zip .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: CultistAccessibility-${{ github.ref_name }}.zip
+          generate_release_notes: true

@@ -1,0 +1,289 @@
+# Cultist Simulator Accessibility - 简体中文 (the game's culture id is "zh-hans"). Keys and format are explained in en.txt.
+
+ModLoaded = Cultist Simulator 无障碍模组已加载。随时按 F1 获取帮助。
+
+# Lists and navigation
+StartOfList = 顶部。
+EndOfList = 底部。
+NothingToNavigate = 这里没有可以浏览的内容。
+NothingFocused = 没有聚焦任何项目。
+Unavailable = 不可用
+Selected = 已选中
+NotSelected = 未选中
+Checked = 已勾选
+Unchecked = 未勾选
+Maximum = 最大值。
+Minimum = 最小值。
+PercentValue = 百分之 {0}
+EditingField = 正在编辑。输入后按回车键。
+SliderHint = 用左右方向键更改数值。
+PressNewKey = 请按下此操作的新按键。
+NoKeyBound = 无按键
+KeyBoundTo = 已绑定到 {0}。
+PositionOf = 第 {0} 项，共 {1} 项
+
+# Roles
+RoleSlider = 滑块
+RoleKeyBinding = 按键绑定
+RoleTab = 选项卡
+RoleCheckbox = 复选框
+RoleRadio = 选项
+RoleCombo = 组合框
+RoleEdit = 编辑框
+RoleLink = 链接
+OpeningLink = 正在浏览器中打开链接。
+RoleLegacyChoice = 传承
+CloseButton = 关闭
+StackCardsButton = 堆叠卡牌
+CharacterName = 角色名
+
+# Menus
+LegacyInstalled = 已安装，按回车键开始
+LegacyNotInstalled = 未安装
+ModMoveUp = 在加载顺序中上移
+ModMoveDown = 在加载顺序中下移
+ModEnabled = 已启用
+ModDisabled = 已禁用
+
+# Review buffers
+BufferEvents = 事件
+BufferDetails = 详情
+BufferStory = 故事
+BufferVerbs = 行动
+BufferTable = 桌面
+BufferStatus = 状态
+BufferTop = 最新。
+BufferEnd = 最旧。
+AllBuffersEmpty = 所有回顾缓冲区都是空的。
+BufferEmpty = {0}为空。
+BufferSummary.other = {1}，{0} 项
+
+# Help
+HelpTitle = 帮助：{0}
+HelpNavigationHint = 上下方向键朗读帮助，Escape 键关闭。
+HelpClosed = 帮助已关闭。
+
+# Verbosity
+VerbosityIs = 朗读详细程度：{0}。
+Verbosity.Terse = 简洁
+Verbosity.Normal = 普通
+Verbosity.Verbose = 详细
+
+# Key names
+Key.Delete = Delete
+Key.Backspace = 退格键
+Key.Space = 空格键
+Key.Enter = 回车键
+Key.Escape = Escape
+Key.Tab = Tab
+Key.Insert = Insert
+Key.Home = Home
+Key.End = End
+Key.PageUp = Page Up
+Key.PageDown = Page Down
+Key.UpArrow = 上方向键
+Key.DownArrow = 下方向键
+Key.LeftArrow = 左方向键
+Key.RightArrow = 右方向键
+
+# Screens
+Screen.Logo = 标志。按任意键跳过。
+Screen.Quote = 开篇引言。
+Screen.Menu = 主菜单。
+Screen.Tabletop = 桌面。
+Screen.GameOver = 结局。
+Screen.NewGame = 选择你的传承。
+Screen.Crash = 游戏发生了错误。
+PressAnyKey = 按任意键继续。
+DebugDumped = 调试信息已写入日志。
+
+# The table
+GroupVerbs = 行动
+GroupCards = 卡牌
+GroupControls = 控制
+GroupAnnounce = {0}，{1}
+NoVerbs = 桌面上没有行动。
+NoCards = 桌面上没有卡牌。
+VerbCount.other = {0} 个行动
+CardCount.other = {0} 张卡牌
+BusyCount.other = {0} 个进行中
+DoneCount.other = {0} 个有结果待收取
+TableHint = 方向键移动，左右键在行动、卡牌和控制之间切换，回车键执行，F1 获取帮助。
+
+# Verbs (situations)
+StateIdle = 空闲
+StateReady = 可以开始
+StateRunning = 进行中
+StateStarting = 正在开始
+StateComplete = 结果待收取
+StateHalting = 正在停止
+StateBusy = 忙碌
+TimeLeft = 剩余 {0}
+CardsWaiting.other = {0} 张卡牌待收取
+WindowOpen = 已打开
+SlotEmpty = 空
+SlotWord = 卡槽
+SlotNamed = {0}卡槽
+SlotCount.other = {0} 个卡槽
+SlotGreedy = 贪婪：会自动吸取匹配的卡牌
+SlotConsumes = 会消耗其中的卡牌
+SlotBlocked = 已锁定
+SlotRequires = 接受
+SlotForbids = 禁止
+SlotEssential = 必须具有
+BringsSlot = 附带一个卡槽：{0}
+StartButton = 开始
+StartUnavailable = 开始，不可用：这些卡牌无法组成可以开始的配方
+CollectAll = 全部收下
+OutputHeading = 结果
+StoredHeading = 内部
+PageOf = 第 {0} 页，共 {1} 页
+NoMorePages = 没有其他页了。
+VerbStarted = {0}开始：{1}
+VerbCompleted.plain = {0}已完成
+VerbCompleted.recipe = {0}已完成：{1}
+VerbAppeared = 新行动：{0}
+VerbVanished = {0}消失了
+VerbDanger = 警告：{0}将在 {1} 后结束
+VerbContinues = {0}继续：{1}
+VerbWillBecome = {0}将变为：{1}
+VerbSlotOpened = {0}需要一张卡牌：{1}
+OngoingSlotOpen = {0}卡槽已开启
+OngoingSlotHolds = {0}卡槽中有{1}
+WindowClosed = 窗口已关闭。
+Recipe = 配方
+DeckDraws = 抽取自
+
+# Cards
+FaceDown = 背面朝上的卡牌
+Unique = 独一
+DecaysIn = {0} 后衰变
+Quantity = {0} 张
+Aspects = 性相
+NoAspects = 没有性相。
+CardsArrived = 来到桌面：{0}
+CardGone = {0}消失了
+MergedInto = {0}，现有 {1} 张
+CardBecame = {0}变为{1}
+GreedyGrab = {0}取走了{1}
+
+# Picking and placing
+PickCardFor.other = 为{1}选择一张卡牌。有 {0} 张卡牌匹配。
+PickVerbFor.other = 为{1}选择一个行动。有 {0} 个行动可以接受它。
+NoCardFits = 桌面上没有适合此卡槽的卡牌。
+NoVerbAccepts = 现在没有行动可以接受这张卡牌。
+EmptyTheSlot = 取出卡牌
+PickerCancelled = 已取消。
+Placed = {0}已放入{1}
+Removed = {0}已放回桌面
+CannotPlace = 无法放置。{0}
+CannotMove = 这张卡牌现在无法移动。
+SlotNotEmpty = 卡槽是空的。
+CollectedToTable = 正在收取。
+TakenToTable = {0}已拿到桌面
+CannotStart = 无法开始：这里的东西无法组成可以开始的配方。
+NoWindowOpen = 没有打开的行动窗口。
+NothingToCollect = 还没有可以收取的东西。
+
+# Status and time
+Paused = 已暂停
+NormalSpeed = 正常速度
+FastSpeed = 快进
+VeryFastSpeed = 极快
+NoBusyVerbs = 没有进行中的行动。
+NothingCompleted = 没有行动有结果待收取。
+Busy = {0}，{1}
+DecimalSeparator = .
+Seconds.other = {0} 秒
+SecondsFraction = {0} 秒
+Minutes.other = {0} 分
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = 你进入了漫宿：{0}。请选择一张背面朝上的卡牌。
+MansusChooseHint = 在背面朝上的卡牌上按回车键将其翻开，再按一次回车键将它带回。
+MansusRevealed = 已翻开：{0}。再按一次回车键将它带回。
+MansusLeft = 你离开了漫宿。
+MansusNoCards = 这里还没有可以选择的卡牌。
+MansusChoice = 选项 {0}
+
+PortalSummary = 传送门：{0}
+PortalReadText = 朗读我记得的内容
+PortalTake = 将{0}拿到桌面
+PortalCollectAll = 全部拿走并关闭传送门
+PortalWaiting = 在桌面的传送门中等待：{0}
+
+AchievementUnlocked.plain = 已解锁
+AchievementUnlocked.when = 已解锁 {0}
+AchievementLocked = 未解锁
+
+LifeEnding = 这段人生即将结束。
+
+# Help
+Help.Logo.Title = 标志和开篇引言
+Help.Logo.1 = 按任意键前往主菜单。
+
+Help.Menu.Title = 主菜单
+Help.Menu.1 = 上下方向键在按钮和文本之间移动。Home 和 End 键跳到第一项和最后一项。
+Help.Menu.2 = 回车键激活聚焦的按钮。左右方向键更改滑块和选项。在朗读为链接的文本上按回车键会在浏览器中打开它。
+Help.Menu.3 = Escape 键关闭已打开的面板，例如设置、制作人员或模组。
+Help.Menu.4 = [[UI_CONTINUE]]继续你保存的游戏。[[UI_BEGIN_GAME]]开始新游戏。[[UI_PURGE_SAVE]]在确认后删除你的存档。
+Help.Menu.5 = DLC 和模组面板列出你可以用来开始游戏的额外传承以及已安装的模组。
+Help.Menu.6 = 在设置中，用回车键选择一个选项卡，然后向下移动到它的滑块。按键绑定栏在按回车键后等待新的按键。
+Help.Menu.7 = {0} 朗读屏幕上的全部内容。{1} 重复聚焦的项目。
+
+Help.NewGame.Title = 选择传承
+Help.NewGame.1 = 上下方向键在可选的传承、它们的描述和按钮之间移动。
+Help.NewGame.2 = 在传承上按回车键将其选中；它的描述会出现在下方的文本行中。
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]]以所选传承开始新的人生。[[LEGACY_BACK_TO_MENU]]返回主菜单。
+
+Help.GameOver.Title = 结局
+Help.GameOver.1 = 结局文本在屏幕打开时已经朗读。上下方向键可以逐行重新朗读。
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]]选择新的传承。[[LEGACY_MAIN_MENU]]返回菜单。
+Help.GameOver.3 = 完整的结局文本也在故事回顾缓冲区中：按 Control 加左或右方向键切换到它。
+
+Help.Crash.Title = 错误界面
+Help.Crash.1 = 游戏发生了错误。日志文件按钮打开存放游戏日志的文件夹。退出按钮关闭游戏。
+
+Help.Options.Title = 选项菜单
+Help.Options.1 = 选项打开时游戏处于暂停状态。上下方向键移动，回车键激活，Escape 键关闭选项。
+Help.Options.2 = 最前面的项目是选项卡：在选项卡上按回车键，它的设置会显示在下方。左右方向键更改滑块。
+Help.Options.3 = 在按键绑定上按回车键后等待新的按键。
+Help.Options.4 = [[UI_RESUME]]关闭选项。[[UI_SAVEEXIT]]保存并返回主菜单。[[UI_RESTART]]在确认后从头重新开始这段人生。
+Help.Options.5 = [[UI_BROWSE]]在 Windows 中打开游戏的存档文件夹。
+
+Help.Board.Title = 桌面
+Help.Board.1 = 桌面有三个分组：行动、卡牌和控制。左右方向键切换分组，上下方向键在分组内移动。Home 和 End 键跳到第一项和最后一项。
+Help.Board.2 = 在行动上按回车键打开它的窗口。在卡牌上按回车键列出可以接受它的行动；用回车键选择一个，把卡牌放进去。
+Help.Board.3 = 控制分组包含你的状态、堆叠卡牌按钮、速度按钮、选项和你的角色名。
+Help.Board.4 = {2} 朗读聚焦项目的全部信息：描述、性相及其含义、卡槽。这些内容也会进入详情缓冲区。
+Help.Board.5 = {1} 重复聚焦的项目。{0} 朗读整个分组。
+Help.Board.6 = {3} 朗读你的角色和状态栏：健康、激情、理性、资金。
+Help.Board.7 = {4} 朗读游戏速度、每个进行中的行动及其剩余时间，以及正在衰变的卡牌。
+Help.Board.8 = {5} 跳到下一个有结果待收取的行动。
+Help.Board.9 = 进行中的行动有时会开启一个卡槽并需要一张卡牌。这会被朗读出来，聚焦该行动时它会说“卡槽已开启”。请在时间耗尽前打开该行动，或在卡牌上按回车键来填入。
+Help.Board.10 = 游戏按键：空格键暂停和继续，N 正常速度，M 快进，Tab 堆叠卡牌，Escape 打开选项菜单。
+Help.Board.11 = 游戏未暂停时时间会流逝。用空格键暂停是最安全的思考方式。
+
+Help.Window.Title = 行动窗口
+Help.Window.1 = 上下方向键在窗口中移动：故事文本、卡槽、开始、结果和全部收下。
+Help.Window.2 = 在卡槽上按回车键列出桌面上适合它的卡牌。用回车键选择一张。如果卡槽已满，第一个选项会取出其中的卡牌。
+Help.Window.3 = 在卡槽上按 {6} 或退格键会把其中的卡牌放回桌面。
+Help.Window.4 = 放入卡牌后窗口的预测会改变；会朗读新的配方名称，可以开始时会加上“可以开始”。
+Help.Window.5 = 在开始上按回车键，或按游戏按键 S，开始配方。在结果上按回车键把那张卡牌拿到桌面；全部收下，或游戏按键 C，会全部拿走。
+Help.Window.6 = 在故事文本上按回车键朗读全文。Page Up 和 Page Down，或在故事文本上按左右键，可以翻动长故事的页面。
+Help.Window.7 = Escape 键关闭窗口；留在未开始行动的卡槽中的卡牌会回到桌面。
+
+Help.Mansus.Title = 漫宿
+Help.Mansus.1 = 你正在漫宿中做梦。背面朝上的卡牌在你能到达的地方等待。
+Help.Mansus.2 = 上下方向键在它们之间移动。回车键翻开一张卡牌；其余的会消散。
+Help.Mansus.3 = 再按一次回车键，把翻开的卡牌带回，梦就结束了。
+
+Help.Picker.Title = 从列表中选择
+Help.Picker.1 = 上下方向键在选项之间移动，回车键选择，Escape 键取消。
+Help.Picker.2 = {2} 朗读聚焦选项的全部信息。
+
+Help.Global.1 = 在任何地方都有效的按键：
+Help.Global.2 = {8} 打开此帮助。{7} 更改朗读的详细程度。
+Help.Global.3 = Control 加上下方向键朗读回顾缓冲区；Control 加左右方向键切换缓冲区：事件、详情、故事、行动、桌面和状态。
+Help.Global.4 = 包括所有按键在内的设置位于 BepInEx、config、accessibility.cultistsimulator.screenreader.cfg。

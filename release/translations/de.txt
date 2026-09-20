@@ -1,0 +1,300 @@
+# Cultist Simulator Accessibility - Deutsch. Schlüssel und Format sind in en.txt erklärt.
+
+ModLoaded = Cultist Simulator Barrierefreiheit geladen. Drücke jederzeit F1 für Hilfe.
+
+# Lists and navigation
+StartOfList = Anfang.
+EndOfList = Ende.
+NothingToNavigate = Hier gibt es nichts zum Navigieren.
+NothingFocused = Nichts fokussiert.
+Unavailable = nicht verfügbar
+Selected = ausgewählt
+NotSelected = nicht ausgewählt
+Checked = aktiviert
+Unchecked = nicht aktiviert
+Maximum = Maximum.
+Minimum = Minimum.
+PercentValue = {0} Prozent
+EditingField = Bearbeiten. Tippe und drücke dann Eingabe.
+SliderHint = Ändere den Wert mit den Pfeiltasten links und rechts.
+PressNewKey = Drücke die neue Taste für diese Aktion.
+NoKeyBound = keine Taste
+KeyBoundTo = Belegt mit {0}.
+PositionOf = {0} von {1}
+
+# Roles
+RoleSlider = Schieberegler
+RoleKeyBinding = Tastenbelegung
+RoleTab = Registerkarte
+RoleCheckbox = Kontrollkästchen
+RoleRadio = Option
+RoleCombo = Kombinationsfeld
+RoleEdit = Eingabefeld
+RoleLink = Link
+OpeningLink = Der Link wird in deinem Browser geöffnet.
+RoleLegacyChoice = Vermächtnis
+CloseButton = Schließen
+StackCardsButton = Karten stapeln
+CharacterName = Name der Spielfigur
+
+# Menus
+LegacyInstalled = installiert, drücke Eingabe zum Beginnen
+LegacyNotInstalled = nicht installiert
+ModMoveUp = In der Ladereihenfolge nach oben
+ModMoveDown = In der Ladereihenfolge nach unten
+ModEnabled = aktiviert
+ModDisabled = deaktiviert
+
+# Review buffers
+BufferEvents = Ereignisse
+BufferDetails = Details
+BufferStory = Geschichte
+BufferVerbs = Verben
+BufferTable = Tisch
+BufferStatus = Status
+BufferTop = Neuester Eintrag.
+BufferEnd = Ältester Eintrag.
+AllBuffersEmpty = Alle Puffer sind leer.
+BufferEmpty = {0}: leer.
+BufferSummary.one = {1}, {0} Eintrag
+BufferSummary.other = {1}, {0} Einträge
+
+# Help
+HelpTitle = Hilfe: {0}
+HelpNavigationHint = Pfeil auf und ab lesen die Hilfe, Escape schließt sie.
+HelpClosed = Hilfe geschlossen.
+
+# Verbosity
+VerbosityIs = Ausführlichkeit: {0}.
+Verbosity.Terse = knapp
+Verbosity.Normal = normal
+Verbosity.Verbose = ausführlich
+
+# Key names
+Key.Delete = Entfernen
+Key.Backspace = Rücktaste
+Key.Space = Leertaste
+Key.Enter = Eingabe
+Key.Escape = Escape
+Key.Tab = Tabulator
+Key.Insert = Einfügen
+Key.Home = Pos 1
+Key.End = Ende
+Key.PageUp = Bild auf
+Key.PageDown = Bild ab
+Key.UpArrow = Pfeil auf
+Key.DownArrow = Pfeil ab
+Key.LeftArrow = Pfeil links
+Key.RightArrow = Pfeil rechts
+
+# Screens
+Screen.Logo = Logo. Drücke eine beliebige Taste zum Überspringen.
+Screen.Quote = Eingangszitat.
+Screen.Menu = Hauptmenü.
+Screen.Tabletop = Der Tisch.
+Screen.GameOver = Das Ende.
+Screen.NewGame = Wähle dein Vermächtnis.
+Screen.Crash = Im Spiel ist ein Fehler aufgetreten.
+PressAnyKey = Drücke eine beliebige Taste, um fortzufahren.
+DebugDumped = Debug-Informationen wurden ins Protokoll geschrieben.
+
+# The table
+GroupVerbs = Verben
+GroupCards = Karten
+GroupControls = Steuerung
+GroupAnnounce = {0}, {1}
+NoVerbs = Keine Verben auf dem Tisch.
+NoCards = Keine Karten auf dem Tisch.
+VerbCount.one = {0} Verb
+VerbCount.other = {0} Verben
+CardCount.one = {0} Karte
+CardCount.other = {0} Karten
+BusyCount.one = {0} beschäftigt
+BusyCount.other = {0} beschäftigt
+DoneCount.one = {0} mit wartenden Ergebnissen
+DoneCount.other = {0} mit wartenden Ergebnissen
+TableHint = Pfeiltasten bewegen, links und rechts wechseln zwischen Verben, Karten und Steuerung, Eingabe führt aus, F1 für Hilfe.
+
+# Verbs (situations)
+StateIdle = untätig
+StateReady = bereit zum Starten
+StateRunning = läuft
+StateStarting = startet
+StateComplete = Ergebnisse warten
+StateHalting = hält an
+StateBusy = beschäftigt
+TimeLeft = noch {0}
+CardsWaiting.one = {0} Karte wartet
+CardsWaiting.other = {0} Karten warten
+WindowOpen = geöffnet
+SlotEmpty = leer
+SlotWord = Slot
+SlotNamed = Slot {0}
+SlotCount.one = {0} Slot
+SlotCount.other = {0} Slots
+SlotGreedy = gierig: nimmt sich selbst eine passende Karte
+SlotConsumes = verbraucht seine Karte
+SlotBlocked = blockiert
+SlotRequires = akzeptiert
+SlotForbids = verbietet
+SlotEssential = muss haben
+BringsSlot = Bringt einen Slot mit: {0}
+StartButton = Start
+StartUnavailable = Start, nicht verfügbar: Diese Karten ergeben kein Rezept, das beginnen kann
+CollectAll = Alles sammeln
+OutputHeading = Ergebnisse
+StoredHeading = Darin
+PageOf = Seite {0} von {1}
+NoMorePages = Keine weiteren Seiten.
+VerbStarted = {0} beginnt: {1}
+VerbCompleted.plain = {0} ist fertig
+VerbCompleted.recipe = {0} ist fertig: {1}
+VerbAppeared = Neues Verb: {0}
+VerbVanished = {0} ist verschwunden
+VerbDanger = Warnung: {0} endet in {1}
+VerbContinues = {0} geht weiter: {1}
+VerbWillBecome = {0} wird zu: {1}
+VerbSlotOpened = {0} will eine Karte: {1}
+OngoingSlotOpen = Slot {0} offen
+OngoingSlotHolds = Slot {0} enthält {1}
+WindowClosed = Fenster geschlossen.
+Recipe = Rezept
+DeckDraws = zieht aus
+
+# Cards
+FaceDown = verdeckte Karte
+Unique = einzigartig
+DecaysIn = zerfällt in {0}
+Quantity = mal {0}
+Aspects = Aspekte
+NoAspects = Keine Aspekte.
+CardsArrived = Auf dem Tisch: {0}
+CardGone = {0} ist verschwunden
+MergedInto = {0}, jetzt {1}
+CardBecame = {0} wird zu {1}
+GreedyGrab = {0} nimmt {1}
+
+# Picking and placing
+PickCardFor.one = Wähle eine Karte für {1}. {0} Karte passt.
+PickCardFor.other = Wähle eine Karte für {1}. {0} Karten passen.
+PickVerbFor.one = Wähle ein Verb für {1}. {0} Verb kann sie aufnehmen.
+PickVerbFor.other = Wähle ein Verb für {1}. {0} Verben können sie aufnehmen.
+NoCardFits = Keine Karte auf dem Tisch passt in diesen Slot.
+NoVerbAccepts = Kein Verb kann diese Karte gerade aufnehmen.
+EmptyTheSlot = Karte herausnehmen
+PickerCancelled = Abgebrochen.
+Placed = {0} in {1} gelegt
+Removed = {0} auf den Tisch zurückgelegt
+CannotPlace = Kann nicht gelegt werden. {0}
+CannotMove = Diese Karte kann gerade nicht bewegt werden.
+SlotNotEmpty = Der Slot ist leer.
+CollectedToTable = Wird eingesammelt.
+TakenToTable = {0} auf den Tisch gelegt
+CannotStart = Start nicht möglich: Nichts hier ergibt ein Rezept, das beginnen kann.
+NoWindowOpen = Kein Verbfenster ist geöffnet.
+NothingToCollect = Noch nichts zum Einsammeln.
+
+# Status and time
+Paused = Pausiert
+NormalSpeed = Normale Geschwindigkeit
+FastSpeed = Schnellvorlauf
+VeryFastSpeed = Sehr schnell
+NoBusyVerbs = Kein Verb ist beschäftigt.
+NothingCompleted = Bei keinem Verb warten Ergebnisse.
+Busy = {0}, {1}
+DecimalSeparator = ,
+Seconds.one = {0} Sekunde
+Seconds.other = {0} Sekunden
+SecondsFraction = {0} Sekunden
+Minutes.one = {0} Minute
+Minutes.other = {0} Minuten
+MinutesAndSeconds = {0} {1}
+
+# The Mansus
+MansusEntered = Du betrittst die Mansus: {0}. Wähle eine verdeckte Karte.
+MansusChooseHint = Drücke Eingabe auf einer verdeckten Karte, um sie umzudrehen, und noch einmal Eingabe, um sie mitzunehmen.
+MansusRevealed = Umgedreht: {0}. Drücke noch einmal Eingabe, um sie mitzunehmen.
+MansusLeft = Du verlässt die Mansus.
+MansusNoCards = Hier gibt es noch keine Karten zur Auswahl.
+MansusChoice = Auswahl {0}
+
+PortalSummary = Portal: {0}
+PortalReadText = Vorlesen, woran ich mich erinnere
+PortalTake = {0} auf den Tisch nehmen
+PortalCollectAll = Alles nehmen und das Portal schließen
+PortalWaiting = Wartet im Portal auf dem Tisch: {0}
+
+AchievementUnlocked.plain = freigeschaltet
+AchievementUnlocked.when = freigeschaltet {0}
+AchievementLocked = gesperrt
+
+LifeEnding = Dieses Leben geht zu Ende.
+
+# Help
+Help.Logo.Title = Logo und Eingangszitat
+Help.Logo.1 = Drücke eine beliebige Taste, um zum Hauptmenü zu gelangen.
+
+Help.Menu.Title = Hauptmenü
+Help.Menu.1 = Pfeil auf und ab bewegen zwischen Schaltflächen und Text. Pos 1 und Ende springen zum ersten und letzten Element.
+Help.Menu.2 = Eingabe aktiviert die fokussierte Schaltfläche. Pfeil links und rechts ändern Schieberegler und Auswahlen. Eingabe auf einem als Link angesagten Text öffnet ihn in deinem Browser.
+Help.Menu.3 = Escape schließt ein geöffnetes Fenster wie Einstellungen, Credits oder Mods.
+Help.Menu.4 = [[UI_CONTINUE]] setzt dein gespeichertes Spiel fort. [[UI_BEGIN_GAME]] beginnt ein neues. [[UI_PURGE_SAVE]] löscht nach einer Bestätigung deinen Spielstand.
+Help.Menu.5 = Das Fenster für DLC und Mods zeigt die zusätzlichen Vermächtnisse, mit denen du beginnen kannst, und die installierten Mods.
+Help.Menu.6 = Wähle in den Einstellungen eine Registerkarte mit Eingabe und gehe dann nach unten zu ihren Schiebereglern. Ein Tastenbelegungsfeld wartet nach Eingabe auf die neue Taste.
+Help.Menu.7 = {0} liest alles auf dem Bildschirm. {1} wiederholt das fokussierte Element.
+
+Help.NewGame.Title = Ein Vermächtnis wählen
+Help.NewGame.1 = Pfeil auf und ab bewegen zwischen den angebotenen Vermächtnissen, ihren Beschreibungen und den Schaltflächen.
+Help.NewGame.2 = Eingabe auf einem Vermächtnis wählt es aus; seine Beschreibung steht dann in den Textzeilen darunter.
+Help.NewGame.3 = [[LEGACY_START_NEW_GAME]] beginnt ein neues Leben mit dem gewählten Vermächtnis. [[LEGACY_BACK_TO_MENU]] führt zurück zum Hauptmenü.
+
+Help.GameOver.Title = Das Ende
+Help.GameOver.1 = Der Text des Endes wurde beim Öffnen des Bildschirms vorgelesen. Pfeil auf und ab lesen ihn noch einmal Zeile für Zeile.
+Help.GameOver.2 = [[LEGACY_ANOTHER_DESCENT]] wählt ein neues Vermächtnis. [[LEGACY_MAIN_MENU]] führt zurück zum Menü.
+Help.GameOver.3 = Der vollständige Text des Endes steht auch im Puffer Geschichte: Steuerung plus Pfeil links oder rechts führt dorthin.
+
+Help.Crash.Title = Fehlerbildschirm
+Help.Crash.1 = Im Spiel ist ein Fehler aufgetreten. Die Schaltfläche für Protokolldateien öffnet den Ordner mit den Protokollen des Spiels. Die Schaltfläche zum Beenden schließt das Spiel.
+
+Help.Options.Title = Optionsmenü
+Help.Options.1 = Das Spiel ist pausiert, solange die Optionen geöffnet sind. Pfeil auf und ab bewegen, Eingabe aktiviert, Escape schließt die Optionen.
+Help.Options.2 = Die ersten Elemente sind die Registerkarten: Eingabe auf einer Registerkarte zeigt ihre Einstellungen darunter. Pfeil links und rechts ändern einen Schieberegler.
+Help.Options.3 = Eingabe auf einer Tastenbelegung wartet auf die neue Taste.
+Help.Options.4 = [[UI_RESUME]] schließt die Optionen. [[UI_SAVEEXIT]] speichert und führt zurück zum Hauptmenü. [[UI_RESTART]] fragt nach einer Bestätigung und beginnt dieses Leben dann von vorn.
+Help.Options.5 = [[UI_BROWSE]] öffnet den Spielstandordner des Spiels in Windows.
+
+Help.Board.Title = Der Tisch
+Help.Board.1 = Der Tisch hat drei Gruppen: Verben, Karten und Steuerung. Pfeil links und rechts wechseln die Gruppe, auf und ab bewegen darin. Pos 1 und Ende springen zum ersten und letzten Element.
+Help.Board.2 = Eingabe auf einem Verb öffnet sein Fenster. Eingabe auf einer Karte listet die Verben auf, die sie aufnehmen können; wähle eines mit Eingabe, um die Karte hineinzulegen.
+Help.Board.3 = Steuerung enthält deinen Status, die Schaltfläche zum Stapeln der Karten, die Geschwindigkeitstasten, die Optionen und den Namen deiner Spielfigur.
+Help.Board.4 = {2} liest alles über das fokussierte Element: Beschreibung, Aspekte und ihre Bedeutung, Slots. Die Zeilen landen auch im Puffer Details.
+Help.Board.5 = {1} wiederholt das fokussierte Element. {0} liest die ganze Gruppe.
+Help.Board.6 = {3} liest deine Spielfigur und die Statusleiste: Gesundheit, Leidenschaft, Vernunft, Geld.
+Help.Board.7 = {4} liest die Spielgeschwindigkeit, jedes beschäftigte Verb mit seiner Restzeit und die Karten, die zerfallen.
+Help.Board.8 = {5} springt zum nächsten Verb mit wartenden Ergebnissen.
+Help.Board.9 = Ein laufendes Verb öffnet manchmal einen Slot und will eine Karte. Das wird angesagt, und das Verb sagt dann „Slot offen“, wenn es fokussiert ist. Öffne das Verb oder drücke Eingabe auf einer Karte, um ihn zu füllen, bevor die Zeit abläuft.
+Help.Board.10 = Tasten des Spiels: Leertaste pausiert und setzt fort, N normale Geschwindigkeit, M Schnellvorlauf, Tabulator stapelt Karten, Escape öffnet das Optionsmenü.
+Help.Board.11 = Die Zeit läuft, solange das Spiel nicht pausiert ist. Mit der Leertaste zu pausieren ist der sicherste Weg zum Nachdenken.
+
+Help.Window.Title = Ein Verbfenster
+Help.Window.1 = Pfeil auf und ab bewegen durch das Fenster: den Text der Geschichte, die Slots, Start, die Ergebnisse und Alles sammeln.
+Help.Window.2 = Eingabe auf einem Slot listet die Karten auf dem Tisch auf, die hineinpassen. Wähle eine mit Eingabe. Ist der Slot belegt, nimmt die erste Auswahl seine Karte heraus.
+Help.Window.3 = {6} oder Rücktaste auf einem Slot legt seine Karte auf den Tisch zurück.
+Help.Window.4 = Wenn Karten gelegt werden, ändert sich die Vorhersage des Fensters; der neue Rezeptname wird gelesen, mit „bereit zum Starten“, wenn Start funktionieren wird.
+Help.Window.5 = Eingabe auf Start oder die Spieltaste S beginnt das Rezept. Eingabe auf einem Ergebnis legt diese Karte auf den Tisch; Alles sammeln oder die Spieltaste C nimmt alle.
+Help.Window.6 = Eingabe auf dem Text der Geschichte liest ihn vollständig. Bild auf und Bild ab, oder links und rechts auf dem Text der Geschichte, blättern durch eine lange Geschichte.
+Help.Window.7 = Escape schließt das Fenster; Karten, die in den Slots eines nicht gestarteten Verbs liegen, kehren auf den Tisch zurück.
+
+Help.Mansus.Title = Die Mansus
+Help.Mansus.1 = Du träumst in der Mansus. Verdeckte Karten warten an den Orten, die du erreichen kannst.
+Help.Mansus.2 = Pfeil auf und ab bewegen zwischen ihnen. Eingabe dreht eine Karte um; die anderen verblassen.
+Help.Mansus.3 = Noch einmal Eingabe nimmt die aufgedeckte Karte mit, und der Traum endet.
+
+Help.Picker.Title = Aus einer Liste wählen
+Help.Picker.1 = Pfeil auf und ab bewegen durch die Auswahl, Eingabe wählt, Escape bricht ab.
+Help.Picker.2 = {2} liest alles über die fokussierte Auswahl.
+
+Help.Global.1 = Tasten, die überall funktionieren:
+Help.Global.2 = {8} öffnet diese Hilfe. {7} ändert, wie viel gesagt wird.
+Help.Global.3 = Steuerung plus Pfeil auf und ab liest die Puffer; Steuerung plus links und rechts wechselt den Puffer: Ereignisse, Details, Geschichte, Verben, Tisch und Status.
+Help.Global.4 = Die Einstellungen, einschließlich aller Tasten, stehen in BepInEx, config, accessibility.cultistsimulator.screenreader.cfg.

@@ -1,12 +1,14 @@
-# Builds a release zip: BepInEx 5 (x86) + the plugin + the x64 speech host with Prism and its licences + README.
-# No game code or assets are included.
+# Builds the release payload: BepInEx 5 (x86) + the plugin + the x64 speech host with Prism and its licences
+# + README. No game code or assets are included.
+# The payload is staged in release\ and committed: the plugin references the game's own DLLs, so the GitHub
+# release workflow cannot build it and zips this folder instead. The local zip goes to dist\ (not committed).
 param([string]$Version = "1.1.0")
 
 $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 & "$root\build.ps1"
 
-$stage = Join-Path $root "release\CultistAccessibility-$Version"
+$stage = Join-Path $root "release"
 if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
 New-Item -ItemType Directory -Force $stage | Out-Null
 
@@ -25,10 +27,13 @@ Copy-Item "$deployed\SpeechHost" $pluginDest -Recurse
 Get-ChildItem $pluginDest -Recurse -Filter "*.pdb" | Remove-Item -Force
 
 # 3. Documentation, and the built-in translations as a reference for corrections (see README, Languages).
+#    The release workflow adds readme.html, generated from README.md with pandoc.
 Copy-Item "$root\README.md" $stage
 Copy-Item "$root\CultistAccessibility\Lang" (Join-Path $stage "translations") -Recurse
 
-$zip = Join-Path $root "release\CultistAccessibility-$Version.zip"
+$dist = Join-Path $root "dist"
+New-Item -ItemType Directory -Force $dist | Out-Null
+$zip = Join-Path $dist "CultistAccessibility-$Version.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
 Compress-Archive -Path "$stage\*" -DestinationPath $zip
 Write-Output "Created $zip"
